@@ -2,6 +2,8 @@ package Software;
 import Tangibles.GroceryStore;
 import java.awt.*;
 import java.awt.event.*;
+import java.math.BigInteger;
+
 import javax.swing.*;
 
 import People.Customer;
@@ -59,13 +61,14 @@ public class MakeAcount extends JPanel implements ActionListener {
 		
 	}
 	public void actionPerformed(ActionEvent e) {
+		
 		if(e.getSource() == makeAcount) {
 			Customer C = new Customer();
 			C.setUsername(username.getText());
 			C.setAdress(adress.getText());
-			C.setCreditCardNumber(Integer.parseInt(creditNum.getText()));
+			C.setCreditCardNumber(Long.parseLong(creditNum.getText()));
 			C.setPassword(password.getText());
-			C.setPhoneNumber(Integer.parseInt(phoneNumber.getText()));
+			C.setPhoneNumber(Long.parseLong(phoneNumber.getText()));
 			
 			top.runLogin();
 		}

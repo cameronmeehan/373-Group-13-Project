@@ -1,10 +1,12 @@
 package People;
 
+import java.math.BigInteger;
+
 public class Person {
 
 	protected String name;
 	protected String adress;
-	protected int phoneNumber;
+	protected long phoneNumber;
 	protected String password;
 	protected String username;
 	
@@ -33,10 +35,10 @@ public class Person {
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
-	public int getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	

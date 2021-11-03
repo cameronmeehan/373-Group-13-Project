@@ -6,7 +6,6 @@ import javax.swing.*;
 
 public class Login extends JPanel implements ActionListener{
 
-	//private JPanel loginPanel;
 	private JButton loginButton; //Button to login
 	private JButton makeNewAcount; //Button to make new acount
 	private JTextField username;
@@ -60,7 +59,7 @@ public class Login extends JPanel implements ActionListener{
 						JOptionPane.showMessageDialog(null, "test.. Customer logged in");
 						loggedin = true;
 						
-						//top.runCustomeer;
+						//top.runCustomer;
 					}
 			}
 			for(int i = 0; i < GroceryStore.EmployeeList.size(); i++) {
@@ -77,10 +76,9 @@ public class Login extends JPanel implements ActionListener{
 				if(GroceryStore.AdminList.get(i).getUsername().equals(username.getText()) &&
 						GroceryStore.AdminList.get(i).getPassword().equals(password.getText()) ) {
 						
-						JOptionPane.showMessageDialog(null, "test.. Admin logged in");
 						loggedin = true;
 						
-						//top.runAdmin
+						top.runAdmin(GroceryStore.AdminList.get(i));
 					}
 				}
 			if(loggedin != true) {

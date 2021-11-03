@@ -1,10 +1,12 @@
 package People;
 
+import java.math.BigInteger;
+
 import Tangibles.GroceryStore;
 
 public class Customer extends Person {
 
-	private int creditCardNumber;
+	private Long creditCardNumber;
 	
 	public Customer() {
 		GroceryStore.CustomerList.add(this);
@@ -15,11 +17,11 @@ public class Customer extends Person {
 		//brings customer to online checkout page?
 	}
 
-	public int getCreditCardNumber() {
+	public Long getCreditCardNumber() {
 		return creditCardNumber;
 	}
 
-	public void setCreditCardNumber(int creditCardNumber) {
+	public void setCreditCardNumber(Long creditCardNumber) {
 		this.creditCardNumber = creditCardNumber;
 	}
 }
