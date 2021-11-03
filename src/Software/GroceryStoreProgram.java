@@ -19,10 +19,12 @@ public class GroceryStoreProgram {
 		E1.setName("tom");
 		E1.setPassword("1234");
 		E1.setUsername("tom");
+		E1.setHourlyRate(12);
 		Employee E2 = new Employee();
 		E2.setName("tommy");
 		E2.setPassword("1234");
 		E2.setUsername("tommy");
+		E2.setHourlyRate(15);
 		
 		new GroceryStoreProgramGUI();
 	}
