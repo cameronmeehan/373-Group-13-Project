@@ -18,16 +18,30 @@ public class GroceryStoreProgramGUI extends JFrame{
 		
 		//adding close button
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//making border layout possible
-		setLayout(new BorderLayout());
-		
-		login = new Login();
-		add(login, BorderLayout.CENTER);
-		
-		setVisible(true);
-			
+		this.runLogin();
 		
 	}
+	
+	public void runLogin() {
+		//clears last panel
+		getContentPane().removeAll();
+		
+		login = new Login(this);
+		add(login);
+		setVisible(true);
+		
+	}
+	
+	public void runMakeAcount() {
+		//clears last panel
+		getContentPane().removeAll();
+		
+		MakeAcount makeacount;
+		makeacount = new MakeAcount(this);
+		add(makeacount);
+		
+		setVisible(true);
+	}
+	
 
 }

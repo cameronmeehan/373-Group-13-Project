@@ -1,8 +1,14 @@
 package People;
 
+import Tangibles.GroceryStore;
+
 public class Customer extends Person {
 
 	private int creditCardNumber;
+	
+	public Customer() {
+		GroceryStore.CustomerList.add(this);
+	}
 	
 	public void goToOnlineCheckout() {
 		

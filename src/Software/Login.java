@@ -6,29 +6,25 @@ import javax.swing.*;
 
 public class Login extends JPanel implements ActionListener{
 
-
-	//private Login login;
-	
 	//private JPanel loginPanel;
 	private JButton loginButton; //Button to login
 	private JButton makeNewAcount; //Button to make new acount
 	private JTextField username;
 	private JTextField password;
 	private JLabel heading;
-	private JLabel message;
+	private GroceryStoreProgramGUI top;
 	
-	public Login() {
+	public Login(GroceryStoreProgramGUI aTop) {
+		top = aTop;
 		setLayout(null);
 		heading = new JLabel("Welcome to the Grocery Store Program");
 		loginButton = new JButton("Login");
-		makeNewAcount = new JButton("Make New Acount");
+		makeNewAcount = new JButton("Make New Customer Acount");
 		username = new JTextField("Username");
 		password = new JTextField("Password");
-		message = new JLabel();
 		
 		//heading font adjust
 		heading.setFont(new Font("Calibri", Font.BOLD, 40 ));
-		message.setFont(new Font("Calibri", Font.BOLD, 25 ));
 		
 		//setting button and text fields listeners
 		loginButton.addActionListener(this);
@@ -40,7 +36,6 @@ public class Login extends JPanel implements ActionListener{
 		makeNewAcount.setBounds(400,800,200,100);
 		username.setBounds(350,400,300,40);
 		password.setBounds(350,500,300,40);
-		message.setBounds(350, 150, 800, 40);
 		
 		//add(stuff to panel)
 		add(username);
@@ -48,7 +43,6 @@ public class Login extends JPanel implements ActionListener{
 		add(heading);
 		add(loginButton);
 		add(makeNewAcount);
-		add(message);
 	}
 	
 	
@@ -63,31 +57,30 @@ public class Login extends JPanel implements ActionListener{
 				if(GroceryStore.CustomerList.get(i).getUsername().equals(username.getText()) &&
 						GroceryStore.CustomerList.get(i).getPassword().equals(password.getText()) ) {
 						
-						JOptionPane.showMessageDialog(null, "Customer logged in");
+						JOptionPane.showMessageDialog(null, "test.. Customer logged in");
 						loggedin = true;
 						
-						//bring to next page
+						//top.runCustomeer;
 					}
 			}
 			for(int i = 0; i < GroceryStore.EmployeeList.size(); i++) {
 				if(GroceryStore.EmployeeList.get(i).getUsername().equals(username.getText()) &&
 						GroceryStore.EmployeeList.get(i).getPassword().equals(password.getText()) ) {
 						
-						JOptionPane.showMessageDialog(null, "Employee logged in");
+						JOptionPane.showMessageDialog(null, "test.. Employee logged in");
 						loggedin = true;
 						
-						//bring to next page
+						//top.runEmployee;
 					}
 				}
 			for(int i = 0; i < GroceryStore.AdminList.size(); i++) {
 				if(GroceryStore.AdminList.get(i).getUsername().equals(username.getText()) &&
 						GroceryStore.AdminList.get(i).getPassword().equals(password.getText()) ) {
 						
-						JOptionPane.showMessageDialog(null, "Admin logged in");
+						JOptionPane.showMessageDialog(null, "test.. Admin logged in");
 						loggedin = true;
 						
-
-						//bring to next page
+						//top.runAdmin
 					}
 				}
 			if(loggedin != true) {
@@ -97,7 +90,8 @@ public class Login extends JPanel implements ActionListener{
 		
 		if(e.getSource() == makeNewAcount) {
 			
-			JOptionPane.showMessageDialog(null, "going to make acount page... work in progress");
+			top.runMakeAcount();
 		}
+		return;
 	}
 }

@@ -8,6 +8,7 @@ public class Person {
 	protected String password;
 	protected String username;
 	
+	
 	public String getUsername() {
 		return username;
 	}
