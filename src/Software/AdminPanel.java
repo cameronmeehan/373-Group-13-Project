@@ -6,9 +6,11 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import People.Customer;
 import People.Employee;
 import People.Person;
 import Tangibles.GroceryStore;
+import Tangibles.InventoryItem;
 
 public class AdminPanel extends JPanel implements ActionListener{
 
@@ -18,6 +20,8 @@ public class AdminPanel extends JPanel implements ActionListener{
 	private JScrollPane EmployeeScroll; //scroll the employee list
 	private JLabel ListBanner;
 	private JLabel IListBanner;
+	private JList Inventories; //list of inventor items
+	private JScrollPane InventoryScroll;
 	
 	//hiring employee stuff
 	private JButton HireEmployee; //Button hire employee, have fields already entered
@@ -42,6 +46,11 @@ public class AdminPanel extends JPanel implements ActionListener{
 	
 	//inventory add stuff
 	private JLabel inventoryAddBanner;
+	private JRadioButton inventoryTypeDairy;
+	private JRadioButton inventoryTypeMeat;
+	private JRadioButton inventoryTypeDryGood;
+	private JRadioButton inventoryTypeProduce;
+	private ButtonGroup inventoryButtonGroup;
 	
 	public AdminPanel(GroceryStoreProgramGUI aTop) {
 		top = aTop;
@@ -51,6 +60,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		EmployeeScroll = new JScrollPane(ListFromArrayEmployee(GroceryStore.EmployeeList));
 		ListBanner = new JLabel("Employee List:");
 		IListBanner = new JLabel("Invetory List:");
+		InventoryScroll = new JScrollPane(ListFromArrayInventory(GroceryStore.InventoryList));
 		
 		//employee hire stuff
 		HireBanner = new JLabel("Please enter a new Employee's information and press Hire:");
@@ -61,6 +71,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		adress = new JTextField("Adress");
 		phoneNum = new JTextField("Phone Number");
 		payRate = new JTextField("Pay Rate");
+		HireEmployee.addActionListener(this);
 		
 		//wage stuff
 		wageBanner = new JLabel("Please enter the Employees Name to view or change thier wage:");
@@ -77,6 +88,15 @@ public class AdminPanel extends JPanel implements ActionListener{
 		
 		//inventory add
 		inventoryAddBanner = new JLabel("Please enter an inventory items information and press Add:");
+		inventoryTypeDairy = new JRadioButton("Dairy");
+		inventoryTypeMeat = new JRadioButton("Meat");
+		inventoryTypeDryGood = new JRadioButton("Dry Good");
+		inventoryTypeProduce = new JRadioButton("Produce");
+		inventoryButtonGroup = new ButtonGroup();
+		inventoryButtonGroup.add(inventoryTypeDairy);
+		inventoryButtonGroup.add(inventoryTypeMeat);
+		inventoryButtonGroup.add(inventoryTypeDryGood);
+		inventoryButtonGroup.add(inventoryTypeProduce);
 		
 		
 		//setBounds is (x, y, width, height)
@@ -84,6 +104,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		ListBanner.setBounds(100,25,200,30);
 		EmployeeScroll.setBounds(100,65, 200,90);
 		IListBanner.setBounds(600,25,200,30);
+		InventoryScroll.setBounds(500,65,200,90);
 		//employee hire
 		HireBanner.setBounds(100,500,400,30);
 		name.setBounds(100,530,300,30);
@@ -103,17 +124,24 @@ public class AdminPanel extends JPanel implements ActionListener{
 		
 		//inventory price modify
 		inventoryBanner.setBounds(500,150,400,40);
+		
 		//inventory add
 		inventoryAddBanner.setBounds(500,500,400,40);
+		inventoryTypeDairy.setBounds(500,550,100,40);
+		inventoryTypeMeat.setBounds(600,550,100,40);
+		inventoryTypeDryGood.setBounds(700,550,100,40);
+		inventoryTypeProduce.setBounds(800,550,100,40);
 		
 		//adding stuff to panel
 		add(EmployeeScroll); add(ListBanner); add(HireBanner); add(HireEmployee); add(wageBanner);
 		add(inventoryBanner); add(IListBanner); add(inventoryAddBanner); add(name);
 		add(username); add(password); add(adress); add(phoneNum); add(payRate); add(chooseName);
 		add(viewEmployee); add(wageChange); add(employeeInfo); add(newPayRate);
-		
+		add(InventoryScroll); add(inventoryTypeDairy); add(inventoryTypeMeat); add(inventoryTypeDryGood);
+		add(inventoryTypeProduce);
 		
 	}
+	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == viewEmployee) {
 			for(int i = 0; i < GroceryStore.EmployeeList.size(); i ++) {
@@ -132,13 +160,8 @@ public class AdminPanel extends JPanel implements ActionListener{
 			for(int i = 0; i < GroceryStore.EmployeeList.size(); i ++) {
 				if(GroceryStore.EmployeeList.get(i).getName().equals(chooseName.getText())){
 					
-					//cant pareInt a text field directly
-					String temp;
-					int tempi;
-					temp = wageChange.getText();
-					tempi = Integer.parseInt(temp);
 					
-					GroceryStore.EmployeeList.get(i).setHourlyRate(tempi);
+					GroceryStore.EmployeeList.get(i).setHourlyRate(Double.parseDouble(newPayRate.getText()));
 					
 					employeeInfo.setText(GroceryStore.EmployeeList.get(i).getName() + ": " +
 							GroceryStore.EmployeeList.get(i).getHourlyRate() + "$ per hour");
@@ -149,6 +172,24 @@ public class AdminPanel extends JPanel implements ActionListener{
 			}
 			
 		}
+		if(e.getSource() == HireEmployee) {
+			
+			Employee E = new Employee();
+			E.setName(name.getText());
+			E.setUsername(username.getText());
+			E.setPassword(password.getText());
+			E.setAdress(adress.getText());
+			E.setPhoneNumber(Integer.parseInt(phoneNum.getText()));
+			E.setHourlyRate(Integer.parseInt(payRate.getText()));
+			
+			remove(employeeInfo);
+			EmployeeScroll.setViewportView(ListFromArrayEmployee(GroceryStore.EmployeeList));
+			add(employeeInfo);
+			
+		}
+			
+			
+		
 	}
 	
 	public JList ListFromArrayEmployee(ArrayList<Employee> aList) {
@@ -162,7 +203,16 @@ public class AdminPanel extends JPanel implements ActionListener{
 		return(lTemp);
 	}	
 	
-	
+	public JList ListFromArrayInventory(ArrayList<InventoryItem> aList) {
+		DefaultListModel temp = new DefaultListModel();
+		
+		for(int i = 0; i < aList.size(); i++) {
+			temp.addElement(aList.get(i).getName());
+		}
+		
+		JList lTemp = new JList(temp);
+		return(lTemp);
+	}	
 	
 	
 	

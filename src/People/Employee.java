@@ -5,17 +5,19 @@ import Tangibles.GroceryStore;
 public class Employee extends Person{
 	
 	//need to set all fields
-	private int hourlyRate;
+	private double hourlyRate;
 	
-	public int getHourlyRate() {
-		return hourlyRate;
-	}
-
-	public void setHourlyRate(int hourlyRate) {
-		this.hourlyRate = hourlyRate;
-	}
-
 	public Employee() {
 		GroceryStore.EmployeeList.add(this);
 	}
+	
+	public double getHourlyRate() {
+		return hourlyRate;
+	}
+
+	public void setHourlyRate(double hourlyRate) {
+		this.hourlyRate = hourlyRate;
+	}
+
+	
 }

@@ -2,8 +2,6 @@ package Software;
 import Tangibles.GroceryStore;
 import java.awt.*;
 import java.awt.event.*;
-import java.math.BigInteger;
-
 import javax.swing.*;
 
 import People.Customer;
