@@ -51,6 +51,16 @@ public class AdminPanel extends JPanel implements ActionListener{
 	private JRadioButton inventoryTypeDryGood;
 	private JRadioButton inventoryTypeProduce;
 	private ButtonGroup inventoryButtonGroup;
+	private JButton addButton;
+	private JRadioButton iAdd1; // these buttons are options for the type of inventory item,
+	private JRadioButton iAdd2; // ie meat, then iAdd chooses beef, pork, chicken, fish
+	private JRadioButton iAdd3;
+	private JRadioButton iAdd4;
+	private ButtonGroup iAddGroup;
+	private JTextField iname;// these are the text fields to enter info for new item
+	private JTextField istock;
+	private JTextField iaisle;
+	private JTextField ibarcode;
 	
 	public AdminPanel(GroceryStoreProgramGUI aTop) {
 		top = aTop;
@@ -93,27 +103,45 @@ public class AdminPanel extends JPanel implements ActionListener{
 		inventoryTypeDryGood = new JRadioButton("Dry Good");
 		inventoryTypeProduce = new JRadioButton("Produce");
 		inventoryButtonGroup = new ButtonGroup();
+		iAdd1 = new JRadioButton(); 
+		iAdd2 = new JRadioButton();
+		iAdd3 = new JRadioButton();
+		iAdd4 = new JRadioButton();
+		iAddGroup = new ButtonGroup();
+		addButton = new JButton("Add");
 		inventoryButtonGroup.add(inventoryTypeDairy);
 		inventoryButtonGroup.add(inventoryTypeMeat);
 		inventoryButtonGroup.add(inventoryTypeDryGood);
 		inventoryButtonGroup.add(inventoryTypeProduce);
+		iAddGroup.add(iAdd1);
+		iAddGroup.add(iAdd2);
+		iAddGroup.add(iAdd3);
+		iAddGroup.add(iAdd4);
+		iname = new JTextField("Name");
+		istock = new JTextField("Stock Amount");
+		iaisle = new JTextField("Aisle");
+		ibarcode = new JTextField("Barcode");
+		
+
 		
 		
 		//setBounds is (x, y, width, height)
 		//general
 		ListBanner.setBounds(100,25,200,30);
 		EmployeeScroll.setBounds(100,65, 200,90);
-		IListBanner.setBounds(600,25,200,30);
+		IListBanner.setBounds(500,25,200,30);
 		InventoryScroll.setBounds(500,65,200,90);
+		
 		//employee hire
-		HireBanner.setBounds(100,500,400,30);
-		name.setBounds(100,530,300,30);
-		username.setBounds(100,560,300,30);
-		password.setBounds(100,590,300,30);
-		adress.setBounds(100,620,300,30);
-		phoneNum.setBounds(100,650,300,30);
-		payRate.setBounds(100,680,300,30);
-		HireEmployee.setBounds(100, 750, 100, 100);
+		HireBanner.setBounds(100,500,400,40);
+		name.setBounds(100,540,300,30);
+		username.setBounds(100,570,300,30);
+		password.setBounds(100,600,300,30);
+		adress.setBounds(100,630,300,30);
+		phoneNum.setBounds(100,660,300,30);
+		payRate.setBounds(100,690,300,30);
+		HireEmployee.setBounds(100, 800, 100, 100);
+		
 		//wage
 		wageBanner.setBounds(100,150,400,40);
 		chooseName.setBounds(100, 200, 150, 40);
@@ -131,6 +159,15 @@ public class AdminPanel extends JPanel implements ActionListener{
 		inventoryTypeMeat.setBounds(600,550,100,40);
 		inventoryTypeDryGood.setBounds(700,550,100,40);
 		inventoryTypeProduce.setBounds(800,550,100,40);
+		addButton.setBounds(500,800,100,100);
+		iAdd1.setBounds(800,600,100,40);
+		iAdd2.setBounds(800,650,100,40);
+		iAdd3.setBounds(800,700,100,40);
+		iAdd4.setBounds(800,750,100,40);
+		iname.setBounds(500,600,250,30);
+		istock.setBounds(500,630,250,30);
+		iaisle.setBounds(500,660,250,30);
+		ibarcode.setBounds(500,690,250,30);
 		
 		//adding stuff to panel
 		add(EmployeeScroll); add(ListBanner); add(HireBanner); add(HireEmployee); add(wageBanner);
@@ -138,7 +175,8 @@ public class AdminPanel extends JPanel implements ActionListener{
 		add(username); add(password); add(adress); add(phoneNum); add(payRate); add(chooseName);
 		add(viewEmployee); add(wageChange); add(employeeInfo); add(newPayRate);
 		add(InventoryScroll); add(inventoryTypeDairy); add(inventoryTypeMeat); add(inventoryTypeDryGood);
-		add(inventoryTypeProduce);
+		add(inventoryTypeProduce); add(addButton); add(iAdd1); add(iAdd2); add(iAdd3); add(iAdd4);
+		add(iname); add(istock); add(iaisle); add(ibarcode);
 		
 	}
 	

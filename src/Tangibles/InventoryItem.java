@@ -5,7 +5,7 @@ public class InventoryItem {
 	private String name;
 	private int stock; //number in stock
 	private int aisle; //aisle its located in
-	private int barcode;
+	private long barcode;
 	
 	public int getStock() {
 		return stock;
@@ -23,11 +23,11 @@ public class InventoryItem {
 		this.aisle = aisle;
 	}
 
-	public int getBarcode() {
+	public long getBarcode() {
 		return barcode;
 	}
 
-	public void setBarcode(int barcode) {
+	public void setBarcode(long barcode) {
 		this.barcode = barcode;
 	}
 
