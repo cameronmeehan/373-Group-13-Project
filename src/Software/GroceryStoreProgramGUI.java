@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import People.Admin;
 import People.Customer;
 import People.Employee;
+import People.Person;
 
 public class GroceryStoreProgramGUI extends JFrame{
 	
@@ -61,18 +62,28 @@ public class GroceryStoreProgramGUI extends JFrame{
 	}
 	
 	//loads employee page
-	public void runEmployee(Employee aEmployee) {
+	public void runEmployeePanel() {
 		//clears last panel
 		getContentPane().removeAll();
+		
+		EmployeePanel ePanel;
+		ePanel = new EmployeePanel(this);
+		add(ePanel);
+		setVisible(true);
+
 		
 		
 	}
 	
-	//loads online checkout page
-	public void runOnlineCheckout(Customer aCustomer) {
+	//loads checkout page
+	public void runCheckout() {
 		//clears last panel
 		getContentPane().removeAll();
 		
+		CheckoutPanel cPanel;
+		cPanel = new CheckoutPanel(this);
+		add(cPanel);
+		setVisible(true);
 		
 	}
 	

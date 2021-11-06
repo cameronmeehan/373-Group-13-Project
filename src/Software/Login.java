@@ -56,20 +56,18 @@ public class Login extends JPanel implements ActionListener{
 				if(GroceryStore.CustomerList.get(i).getUsername().equals(username.getText()) &&
 						GroceryStore.CustomerList.get(i).getPassword().equals(password.getText()) ) {
 						
-						JOptionPane.showMessageDialog(null, "test.. Customer logged in");
 						loggedin = true;
 						
-						//top.runCustomer;
+						top.runCheckout();
 					}
 			}
 			for(int i = 0; i < GroceryStore.EmployeeList.size(); i++) {
 				if(GroceryStore.EmployeeList.get(i).getUsername().equals(username.getText()) &&
 						GroceryStore.EmployeeList.get(i).getPassword().equals(password.getText()) ) {
 						
-						JOptionPane.showMessageDialog(null, "test.. Employee logged in");
 						loggedin = true;
 						
-						//top.runEmployee;
+						top.runEmployeePanel();
 					}
 				}
 			for(int i = 0; i < GroceryStore.AdminList.size(); i++) {

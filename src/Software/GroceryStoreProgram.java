@@ -15,6 +15,7 @@ public class GroceryStoreProgram {
 		A1.setPassword("password");
 		GroceryStore.AdminList.add(A1);
 		
+		//making employees for testing
 		Employee E1 = new Employee();
 		E1.setName("tom");
 		E1.setPassword("1234");
@@ -25,6 +26,12 @@ public class GroceryStoreProgram {
 		E2.setPassword("1234");
 		E2.setUsername("tommy");
 		E2.setHourlyRate(15);
+		
+		//making customer for testing
+		Customer C1 = new Customer();
+		C1.setUsername("pat");
+		C1.setPassword("1234");
+		C1.setName("pat");
 		
 		new GroceryStoreProgramGUI();
 	}

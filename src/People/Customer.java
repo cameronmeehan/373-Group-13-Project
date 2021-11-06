@@ -11,11 +11,6 @@ public class Customer extends Person {
 	public Customer() {
 		GroceryStore.CustomerList.add(this);
 	}
-	
-	public void goToOnlineCheckout() {
-		
-		//brings customer to online checkout page?
-	}
 
 	public Long getCreditCardNumber() {
 		return creditCardNumber;
