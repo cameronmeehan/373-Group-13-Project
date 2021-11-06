@@ -57,6 +57,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 	private JTextField iChangeNewPrice;
 	private JButton iChangePrice;
 	private JLabel iChangedLabel;
+	private JButton iViewPrice;
 	
 	//inventory remove stuff
 	private JLabel iRemoveLabel;
@@ -80,6 +81,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 	private JTextField istock;
 	private JTextField iaisle;
 	private JTextField ibarcode;
+	private JTextField iprice;
 	
 	public AdminPanel(GroceryStoreProgramGUI aTop) {
 		//creating an object of GroceryStorePanelGUI so its methods can be used to change panels
@@ -129,6 +131,8 @@ public class AdminPanel extends JPanel implements ActionListener{
 		iChangeName = new JTextField("Name");
 		iChangeNewPrice = new JTextField("New Price");
 		iChangePrice = new JButton("Set Price");
+		iViewPrice = new JButton("View Price");
+		iViewPrice.addActionListener(this);
 		iChangePrice.addActionListener(this);
 		
 		//inventory remove
@@ -167,6 +171,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		istock = new JTextField("Stock Amount");
 		iaisle = new JTextField("Aisle");
 		ibarcode = new JTextField("Barcode");
+		iprice = new JTextField("Price");
 		
 		//setBounds is (x, y, width, height)
 		//general
@@ -204,7 +209,8 @@ public class AdminPanel extends JPanel implements ActionListener{
 		iChangedLabel.setBounds(500,240,400,40);
 		iChangeName.setBounds(500,200,150,30);
 		iChangeNewPrice.setBounds(700,200,150,30);
-		iChangePrice.setBounds(500,280,100,40);
+		iChangePrice.setBounds(700,280,100,40);
+		iViewPrice.setBounds(500,280,100,40);
 		
 		//inventory remove
 		iRemoveLabel.setBounds(500,380,400,40);
@@ -226,6 +232,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		istock.setBounds(500,630,250,30);
 		iaisle.setBounds(500,660,250,30);
 		ibarcode.setBounds(500,690,250,30);
+		iprice.setBounds(500,720,250,30);
 		
 		//adding stuff to panel
 		add(EmployeeScroll); add(ListBanner); add(HireBanner); add(HireEmployee); add(wageBanner);
@@ -236,7 +243,8 @@ public class AdminPanel extends JPanel implements ActionListener{
 		add(inventoryTypeProduce); add(IAddButton); add(iAdd1); add(iAdd2); add(iAdd3); add(iAdd4);
 		add(iname); add(istock); add(iaisle); add(ibarcode); add(exit); add(fireBanner);
 		add(fireName); add(fireButton); add(iRemoveLabel); add(iRemoveButton); add(iRemoveName);
-		add(iChangedLabel); add(iChangeName); add(iChangeNewPrice); add(iChangePrice);
+		add(iChangedLabel); add(iChangeName); add(iChangeNewPrice); add(iChangePrice); add(iViewPrice);
+		add(iprice);
 		
 	}
 	
@@ -354,6 +362,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 				I.setStock(Integer.parseInt(istock.getText()));
 				I.setAisle(Integer.parseInt(iaisle.getText()));
 				I.setBarcode(Long.parseLong(ibarcode.getText()));
+				I.setPrice(Double.parseDouble(iprice.getText()));
 				
 				if(iAdd1.isSelected() == true) {
 					I.setMilk(true);
@@ -372,6 +381,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 				I.setStock(Integer.parseInt(istock.getText()));
 				I.setAisle(Integer.parseInt(iaisle.getText()));
 				I.setBarcode(Long.parseLong(ibarcode.getText()));
+				I.setPrice(Double.parseDouble(iprice.getText()));
 				
 				if(iAdd1.isSelected() == true) {
 					I.setChicken(true);
@@ -393,6 +403,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 				I.setStock(Integer.parseInt(istock.getText()));
 				I.setAisle(Integer.parseInt(iaisle.getText()));
 				I.setBarcode(Long.parseLong(ibarcode.getText()));
+				I.setPrice(Double.parseDouble(iprice.getText()));
 				
 				if(iAdd1.isSelected() == true) {
 					I.setGrain(true);
@@ -411,6 +422,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 				I.setStock(Integer.parseInt(istock.getText()));
 				I.setAisle(Integer.parseInt(iaisle.getText()));
 				I.setBarcode(Long.parseLong(ibarcode.getText()));
+				I.setPrice(Double.parseDouble(iprice.getText()));
 				
 				if(iAdd1.isSelected() == true) {
 					I.setVegetable(true);
@@ -433,13 +445,28 @@ public class AdminPanel extends JPanel implements ActionListener{
 				if(GroceryStore.InventoryList.get(i).getName().equals(iChangeName.getText())){
 					
 					
-					GroceryStore.InventoryList.get(i).setPrice(Double.parseDouble(newPayRate.getText()));
+					GroceryStore.InventoryList.get(i).setPrice(Double.parseDouble(iChangeNewPrice.getText()));
 					
-					employeeInfo.setText(GroceryStore.EmployeeList.get(i).getName() + ": " +
-							GroceryStore.EmployeeList.get(i).getHourlyRate() + "$ per hour");
+					iChangedLabel.setText(GroceryStore.InventoryList.get(i).getName() + ": " +
+							GroceryStore.InventoryList.get(i).getPrice() + "$");
 					
-				remove(employeeInfo);
-				add(employeeInfo);
+				remove(iChangedLabel);
+				add(iChangedLabel);
+				}
+			}
+		}
+		
+		//listener for inventory view price button
+		if(e.getSource() == iViewPrice) {
+			
+			for(int i = 0; i < GroceryStore.InventoryList.size(); i ++) {
+				if(GroceryStore.InventoryList.get(i).getName().equals(iChangeName.getText())){
+					
+					iChangedLabel.setText(GroceryStore.InventoryList.get(i).getName() + ": " +
+							GroceryStore.InventoryList.get(i).getPrice() + "$");
+					
+				remove(iChangedLabel);
+				add(iChangedLabel);
 				}
 			}
 		}

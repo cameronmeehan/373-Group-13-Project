@@ -40,6 +40,7 @@ public class GroceryStoreProgram {
 		I1.setName("Whole Milk");
 		I1.setStock(10);
 		I1.setMilk(true);
+		I1.setPrice(3.5);
 		
 		new GroceryStoreProgramGUI();
 	}
