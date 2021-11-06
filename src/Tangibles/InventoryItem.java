@@ -6,7 +6,16 @@ public class InventoryItem {
 	private int stock; //number in stock
 	private int aisle; //aisle its located in
 	private long barcode;
+	private double price;
 	
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
 	public InventoryItem() {
 		GroceryStore.InventoryList.add(this);
 	}
