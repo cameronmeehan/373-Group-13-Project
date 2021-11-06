@@ -3,7 +3,9 @@ package Software;
 import People.Admin;
 import People.Customer;
 import People.Employee;
+import Tangibles.Dairy;
 import Tangibles.GroceryStore;
+import Tangibles.InventoryItem;
 
 //This class initializes the Program and opens up the GUI
 public class GroceryStoreProgram {
@@ -12,7 +14,7 @@ public class GroceryStoreProgram {
 		//initializing admin
 		Admin A1 = new Admin();
 		A1.setUsername("admin");
-		A1.setPassword("password");
+		A1.setPassword("Password");
 		GroceryStore.AdminList.add(A1);
 		
 		//making employees for testing
@@ -32,6 +34,12 @@ public class GroceryStoreProgram {
 		C1.setUsername("pat");
 		C1.setPassword("1234");
 		C1.setName("pat");
+		
+		//making InventoryItem for testing
+		Dairy I1 = new Dairy();
+		I1.setName("Whole Milk");
+		I1.setStock(10);
+		I1.setMilk(true);
 		
 		new GroceryStoreProgramGUI();
 	}

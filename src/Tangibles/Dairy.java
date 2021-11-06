@@ -1,6 +1,6 @@
 package Tangibles;
 
-public class Dairy {
+public class Dairy extends InventoryItem {
 	private boolean milk;
 	private boolean cheese;
 	private boolean yogurt;

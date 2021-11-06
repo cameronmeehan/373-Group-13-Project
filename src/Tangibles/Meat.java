@@ -1,6 +1,6 @@
 package Tangibles;
 
-public class Meat {
+public class Meat extends InventoryItem  {
 	private boolean chicken;
 	private boolean pork;
 	private boolean beef;
