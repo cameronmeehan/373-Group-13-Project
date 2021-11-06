@@ -9,7 +9,7 @@ import People.Customer;
 
 public class MakeAcount extends JPanel implements ActionListener {
 	
-	private JButton makeAcount; //Button to enter
+	private JButton makeAcount; //Button to finish making acount
 	private JTextField username;
 	private JTextField password;
 	private JTextField name;
@@ -18,6 +18,7 @@ public class MakeAcount extends JPanel implements ActionListener {
 	private JLabel heading;
 	private JTextField adress;
 	private GroceryStoreProgramGUI top;
+	private JButton exit;
 	
 	public MakeAcount(GroceryStoreProgramGUI aTop) {
 		top = aTop;
@@ -30,12 +31,14 @@ public class MakeAcount extends JPanel implements ActionListener {
 		name = new JTextField("Name");
 		phoneNumber = new JTextField("Phone Number");
 		adress = new JTextField("Adress");
+		exit = new JButton("Exit");
 		
 		//heading font adjust
 		heading.setFont(new Font("Calibri", Font.BOLD, 20 ));
 		
 		//setting button and text fields listeners
 		makeAcount.addActionListener(this);
+		exit.addActionListener(this);
 		
 		//setBounds is (x, y, width, height)
 		heading.setBounds(350,10,800, 50);
@@ -46,6 +49,7 @@ public class MakeAcount extends JPanel implements ActionListener {
 		phoneNumber.setBounds(350, 550, 300, 40);
 		adress.setBounds(350, 600,300, 40);
 		creditNum.setBounds(350, 650, 300, 40);
+		exit.setBounds(850,850,100,100);
 		
 		//add(stuff to panel)
 		add(username);
@@ -56,6 +60,7 @@ public class MakeAcount extends JPanel implements ActionListener {
 		add(makeAcount);
 		add(phoneNumber);
 		add(creditNum);
+		add(exit);
 		
 	}
 	public void actionPerformed(ActionEvent e) {
@@ -68,6 +73,9 @@ public class MakeAcount extends JPanel implements ActionListener {
 			C.setPassword(password.getText());
 			C.setPhoneNumber(Long.parseLong(phoneNumber.getText()));
 			
+			top.runLogin();
+		}
+		if(e.getSource() == exit) {
 			top.runLogin();
 		}
 	}

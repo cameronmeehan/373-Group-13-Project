@@ -7,6 +7,18 @@ public class InventoryItem {
 	private int aisle; //aisle its located in
 	private long barcode;
 	
+	public InventoryItem() {
+		GroceryStore.InventoryList.add(this);
+	}
+	
+	public void increaseStock(int amount) {
+		stock = stock + amount;
+	}
+	
+	public void decreaseStock(int amount) {
+		stock = stock - amount;
+	}
+	
 	public int getStock() {
 		return stock;
 	}
@@ -29,10 +41,6 @@ public class InventoryItem {
 
 	public void setBarcode(long barcode) {
 		this.barcode = barcode;
-	}
-
-	public InventoryItem() {
-		GroceryStore.InventoryList.add(this);
 	}
 
 	public String getName() {

@@ -22,6 +22,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 	private JLabel IListBanner;
 	private JList Inventories; //list of inventor items
 	private JScrollPane InventoryScroll;
+	private JButton exit;
 	
 	//hiring employee stuff
 	private JButton HireEmployee; //Button hire employee, have fields already entered
@@ -71,6 +72,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		ListBanner = new JLabel("Employee List:");
 		IListBanner = new JLabel("Invetory List:");
 		InventoryScroll = new JScrollPane(ListFromArrayInventory(GroceryStore.InventoryList));
+		exit = new JButton("Exit");
 		
 		//employee hire stuff
 		HireBanner = new JLabel("Please enter a new Employee's information and press Hire:");
@@ -131,6 +133,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		EmployeeScroll.setBounds(100,65, 200,90);
 		IListBanner.setBounds(500,25,200,30);
 		InventoryScroll.setBounds(500,65,200,90);
+		exit.setBounds(850,850,100,100);
 		
 		//employee hire
 		HireBanner.setBounds(100,500,400,40);
@@ -176,7 +179,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		add(viewEmployee); add(wageChange); add(employeeInfo); add(newPayRate);
 		add(InventoryScroll); add(inventoryTypeDairy); add(inventoryTypeMeat); add(inventoryTypeDryGood);
 		add(inventoryTypeProduce); add(addButton); add(iAdd1); add(iAdd2); add(iAdd3); add(iAdd4);
-		add(iname); add(istock); add(iaisle); add(ibarcode);
+		add(iname); add(istock); add(iaisle); add(ibarcode); add(exit);
 		
 	}
 	
@@ -225,7 +228,9 @@ public class AdminPanel extends JPanel implements ActionListener{
 			add(employeeInfo);
 			
 		}
-			
+		if(e.getSource() == exit) {
+			top.runLogin();
+		}
 			
 		
 	}
