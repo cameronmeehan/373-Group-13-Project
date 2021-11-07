@@ -2,16 +2,31 @@ package Software;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import People.Employee;
 import People.Person;
 
 public class EmployeePanel extends JPanel implements ActionListener{
-	//test comment from cam
+	// general program stuff
 	private GroceryStoreProgramGUI top;
 	private JButton exitButton; //Button to exit
+	
+	// inventory stuff
+	private JButton stockFunction;
+	private JLabel InventoryBanner;
+	private JTextField iIncreaseStock;
+	private JTextField iRemoveStock;
+	private JButton stockIncrease;
+	private JButton stockRemove;
+	
+	// employment years
+	private JLabel YearBanner;
+	private JTextField setYears;
+	private JButton changeYears;
+	
+	// in-person checkout
+	private JButton inPersonCheckout;
 	
 	public EmployeePanel(GroceryStoreProgramGUI aTop) {
 		top = aTop;
