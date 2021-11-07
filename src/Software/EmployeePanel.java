@@ -9,7 +9,7 @@ import People.Employee;
 import People.Person;
 
 public class EmployeePanel extends JPanel implements ActionListener{
-	
+	//test comment from cam
 	private GroceryStoreProgramGUI top;
 	private JButton exitButton; //Button to exit
 	
