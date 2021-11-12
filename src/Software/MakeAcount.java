@@ -16,7 +16,7 @@ public class MakeAcount extends JPanel implements ActionListener {
 	private JTextField phoneNumber;
 	private JTextField creditNum;
 	private JLabel heading;
-	private JTextField adress;
+	private JTextField address;
 	private GroceryStoreProgramGUI top;
 	private JButton exit;
 	
@@ -30,7 +30,7 @@ public class MakeAcount extends JPanel implements ActionListener {
 		creditNum = new JTextField("Credit Card Number");
 		name = new JTextField("Name");
 		phoneNumber = new JTextField("Phone Number");
-		adress = new JTextField("Adress");
+		address = new JTextField("Address");
 		exit = new JButton("Exit");
 		
 		//heading font adjust
@@ -47,7 +47,7 @@ public class MakeAcount extends JPanel implements ActionListener {
 		username.setBounds(350,450,300,40);
 		password.setBounds(350,500,300,40);
 		phoneNumber.setBounds(350, 550, 300, 40);
-		adress.setBounds(350, 600,300, 40);
+		address.setBounds(350, 600,300, 40);
 		creditNum.setBounds(350, 650, 300, 40);
 		exit.setBounds(850,850,100,100);
 		
@@ -56,7 +56,7 @@ public class MakeAcount extends JPanel implements ActionListener {
 		add(password);
 		add(heading);
 		add(name);
-		add(adress);
+		add(address);
 		add(makeAcount);
 		add(phoneNumber);
 		add(creditNum);
@@ -68,7 +68,7 @@ public class MakeAcount extends JPanel implements ActionListener {
 		if(e.getSource() == makeAcount) {
 			Customer C = new Customer();
 			C.setUsername(username.getText());
-			C.setAdress(adress.getText());
+			C.setAddress(address.getText());
 			C.setCreditCardNumber(Long.parseLong(creditNum.getText()));
 			C.setPassword(password.getText());
 			C.setPhoneNumber(Long.parseLong(phoneNumber.getText()));

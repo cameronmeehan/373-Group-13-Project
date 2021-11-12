@@ -5,7 +5,7 @@ import java.math.BigInteger;
 public class Person {
 
 	protected String name;
-	protected String adress;
+	protected String address;
 	protected long phoneNumber;
 	protected String password;
 	protected String username;
@@ -29,11 +29,11 @@ public class Person {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public long getPhoneNumber() {
 		return phoneNumber;

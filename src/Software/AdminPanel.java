@@ -34,7 +34,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 	private JTextField name;
 	private JTextField username;
 	private JTextField password;
-	private JTextField adress;
+	private JTextField address;
 	private JTextField phoneNum;
 	private JTextField payRate;
 	
@@ -104,7 +104,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		name = new JTextField("Name");
 		username = new JTextField("Username");
 		password = new JTextField("Password");
-		adress = new JTextField("Adress");
+		address = new JTextField("Address");
 		phoneNum = new JTextField("Phone Number");
 		payRate = new JTextField("Pay Rate");
 		HireEmployee.addActionListener(this);
@@ -186,7 +186,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		name.setBounds(100,540,300,30);
 		username.setBounds(100,570,300,30);
 		password.setBounds(100,600,300,30);
-		adress.setBounds(100,630,300,30);
+		address.setBounds(100,630,300,30);
 		phoneNum.setBounds(100,660,300,30);
 		payRate.setBounds(100,690,300,30);
 		HireEmployee.setBounds(100,800,100,40);
@@ -237,7 +237,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		//adding stuff to panel
 		add(EmployeeScroll); add(ListBanner); add(HireBanner); add(HireEmployee); add(wageBanner);
 		add(inventoryBanner); add(IListBanner); add(inventoryAddBanner); add(name);
-		add(username); add(password); add(adress); add(phoneNum); add(payRate); add(chooseName);
+		add(username); add(password); add(address); add(phoneNum); add(payRate); add(chooseName);
 		add(viewEmployee); add(wageChange); add(employeeInfo); add(newPayRate);
 		add(InventoryScroll); add(inventoryTypeDairy); add(inventoryTypeMeat); add(inventoryTypeDryGood);
 		add(inventoryTypeProduce); add(IAddButton); add(iAdd1); add(iAdd2); add(iAdd3); add(iAdd4);
@@ -287,7 +287,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 			E.setName(name.getText());
 			E.setUsername(username.getText());
 			E.setPassword(password.getText());
-			E.setAdress(adress.getText());
+			E.setAddress(address.getText());
 			E.setPhoneNumber(Integer.parseInt(phoneNum.getText()));
 			E.setHourlyRate(Integer.parseInt(payRate.getText()));
 			
