@@ -14,6 +14,9 @@ import People.Person;
 public class GroceryStoreProgramGUI extends JFrame{
 	
 	private Login login;
+	public static Admin currentAdminUser;
+	public static Employee currentEmployeeUser;
+	public static Customer currentCustomerUser;
 	
 	//constructs GUI Frame and loads login page
 	public GroceryStoreProgramGUI() {

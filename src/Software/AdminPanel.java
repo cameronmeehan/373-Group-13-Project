@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import People.Admin;
 import People.Customer;
 import People.Employee;
 import People.Person;
@@ -16,6 +17,7 @@ import Tangibles.InventoryItem;
 import Tangibles.Meat;
 import Tangibles.Produce;
 
+//will need to change methods to implement method in Admin class compared to implement here
 public class AdminPanel extends JPanel implements ActionListener{
 
 	//general program stuff
@@ -283,14 +285,17 @@ public class AdminPanel extends JPanel implements ActionListener{
 		// listener for hire employee button
 		if(e.getSource() == HireEmployee) {
 			
-			Employee E = new Employee();
-			E.setName(name.getText());
-			E.setUsername(username.getText());
-			E.setPassword(password.getText());
-			E.setAddress(address.getText());
-			E.setPhoneNumber(Integer.parseInt(phoneNum.getText()));
-			E.setHourlyRate(Integer.parseInt(payRate.getText()));
+
+			//hiring employee
+			JOptionPane.showMessageDialog(null,GroceryStoreProgramGUI.currentAdminUser.hireEmployee(name.getText()));
 			
+			GroceryStore.EmployeeList.get(GroceryStore.EmployeeList.size() - 1).setUsername(username.getText());
+			GroceryStore.EmployeeList.get(GroceryStore.EmployeeList.size() - 1).setPassword(password.getText());
+			GroceryStore.EmployeeList.get(GroceryStore.EmployeeList.size() - 1).setAddress(address.getText());
+			GroceryStore.EmployeeList.get(GroceryStore.EmployeeList.size() - 1).setPhoneNumber(Integer.parseInt(phoneNum.getText()));
+			GroceryStore.EmployeeList.get(GroceryStore.EmployeeList.size() - 1).setHourlyRate(Integer.parseInt(payRate.getText()));
+			
+			//Refreshing the Employee Scroll panel
 			remove(employeeInfo);
 			EmployeeScroll.setViewportView(ListFromArrayEmployee(GroceryStore.EmployeeList));
 			add(employeeInfo);
@@ -300,16 +305,14 @@ public class AdminPanel extends JPanel implements ActionListener{
 		// listener for fire employee button
 		if(e.getSource() == fireButton) {
 			
-			for(int i = 0; i < GroceryStore.EmployeeList.size(); i++){
-				if(GroceryStore.EmployeeList.get(i).getName().equals(fireName.getText())) {
-					
-					GroceryStore.EmployeeList.remove(i);
-					
-					remove(employeeInfo);
-					EmployeeScroll.setViewportView(ListFromArrayEmployee(GroceryStore.EmployeeList));
-					add(employeeInfo);
-				}
-			}
+			
+			//firing employee
+			JOptionPane.showMessageDialog(null, GroceryStoreProgramGUI.currentAdminUser.fireEmployee(fireName.getText()));
+			
+			//Refreshing the Employee Scroll panel
+			remove(employeeInfo);
+			EmployeeScroll.setViewportView(ListFromArrayEmployee(GroceryStore.EmployeeList));
+			add(employeeInfo);
 			
 		}
 		

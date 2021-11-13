@@ -57,7 +57,7 @@ public class Login extends JPanel implements ActionListener{
 						GroceryStore.CustomerList.get(i).getPassword().equals(password.getText()) ) {
 						
 						loggedin = true;
-						
+						GroceryStoreProgramGUI.currentCustomerUser = GroceryStore.CustomerList.get(i);
 						top.runCheckout();
 					}
 			}
@@ -66,7 +66,7 @@ public class Login extends JPanel implements ActionListener{
 						GroceryStore.EmployeeList.get(i).getPassword().equals(password.getText()) ) {
 						
 						loggedin = true;
-						
+						GroceryStoreProgramGUI.currentEmployeeUser = GroceryStore.EmployeeList.get(i);
 						top.runEmployeePanel();
 					}
 				}
@@ -75,7 +75,7 @@ public class Login extends JPanel implements ActionListener{
 						GroceryStore.AdminList.get(i).getPassword().equals(password.getText()) ) {
 						
 						loggedin = true;
-						
+						GroceryStoreProgramGUI.currentAdminUser = GroceryStore.AdminList.get(i);
 						top.runAdmin(GroceryStore.AdminList.get(i));
 					}
 				}
