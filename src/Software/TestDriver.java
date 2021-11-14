@@ -58,7 +58,11 @@ public class TestDriver {
 				//testing exception of firing an employee that does not work at the store
 				A1.fireEmployee("Sarah");
 				
+				System.out.println("\nTesting adding an inventory item to the store.");
+				A1.addInventory("Salmon");
 				
+				System.out.println("\nTesting adding an existing inventory item to the store.");
+				A1.addInventory("Whole Milk");
 				
 	}
 }

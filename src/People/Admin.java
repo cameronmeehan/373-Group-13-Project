@@ -1,6 +1,7 @@
 package People;
 
 import Tangibles.GroceryStore;
+import Tangibles.InventoryItem;
 
 public class Admin extends Person {
 
@@ -60,5 +61,22 @@ public class Admin extends Person {
 		return("Error occured in hiring employee.");
 	}
 	
+	public String addInventory(String item) {
+		for (int i = 0; i < GroceryStore.InventoryList.size(); i++) {
+			if(GroceryStore.InventoryList.get(i).getName().equals(item)) {
+				System.out.println(item + " cannot be added because the item is already in the Grocery Store.");
+				return(item + " cannot be added because the item is already in the Grocery Store.");
+			}
+			
+			else {
+				InventoryItem I = new InventoryItem();
+				I.setName(item);
 
+				System.out.println(item + " was succsesfully added");
+				return(item + " was succsesfully added");
+			}
+		}
+		return("Error occured in adding inventory item.");
+	}
+	
 }
