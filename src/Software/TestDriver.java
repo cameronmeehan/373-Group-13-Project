@@ -1,6 +1,5 @@
 package Software;
 
-import org.library.MyClasses.Person;
 
 import People.Admin;
 import People.Customer;

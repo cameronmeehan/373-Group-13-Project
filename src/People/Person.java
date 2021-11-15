@@ -6,7 +6,7 @@ public class Person {
 
 	protected String name;
 	protected String address;
-	protected long phoneNumber;
+	protected Long phoneNumber;
 	protected String password;
 	protected String username;
 	
@@ -35,14 +35,14 @@ public class Person {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public long getPhoneNumber() {
+	public Long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(Long phoneNumber) {
-		int length =  String.valueOf(phoneNumber).length();
+	public void setPhoneNumber(Long phoneNum) {
+		int length =  String.valueOf(phoneNum).length();
 
 		if ( length == 10 ) {
-			this.phoneNumber = phoneNumber;
+			this.phoneNumber = phoneNum;
 		}
 		if (length < 10) {
 			System.out.println("This phone number is invalid, phone number is not long enough");

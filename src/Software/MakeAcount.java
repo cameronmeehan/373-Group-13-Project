@@ -69,7 +69,7 @@ public class MakeAcount extends JPanel implements ActionListener {
 			Customer C = new Customer();
 			C.setUsername(username.getText());
 			C.setAddress(address.getText());
-			C.setCreditCardNumber(Long.parseLong(creditNum.getText()));
+			C.setCreditCardNumber(creditNum.getText());
 			C.setPassword(password.getText());
 			C.setPhoneNumber(Long.parseLong(phoneNumber.getText()));
 			

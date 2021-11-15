@@ -16,11 +16,11 @@ public class Customer extends Person {
 		return creditCardNumber;
 	}
 
-	public void setCreditCardNumber(String creditCardNumber) {
-		int length = creditCardNumber.length();
+	public void setCreditCardNumber(String l) {
+		int length = l.length();
 		
 		if (length == 16) {
-			this.creditCardNumber = creditCardNumber;
+			this.creditCardNumber = l;
 		}
 		
 		if(length < 16) {
