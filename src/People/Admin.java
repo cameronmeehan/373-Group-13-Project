@@ -2,7 +2,7 @@ package People;
 
 import Tangibles.GroceryStore;
 import Tangibles.InventoryItem;
-
+// test comment
 public class Admin extends Person {
 
 	public String hireEmployee(String aName) {
