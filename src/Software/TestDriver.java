@@ -1,10 +1,13 @@
 package Software;
 
+import org.library.MyClasses.Person;
+
 import People.Admin;
 import People.Customer;
 import People.Employee;
 import Tangibles.Dairy;
 import Tangibles.GroceryStore;
+import java.math.BigInteger;
 
 //this can be used to test program functions without a GUI being initialized
 public class TestDriver {
@@ -48,6 +51,20 @@ public class TestDriver {
 				I1.setStock(10);
 				I1.setMilk(true);
 				I1.setPrice(3.5);
+				
+				//Making customer for checking credit card exceptions
+				People.Person P5 = new People.Person();
+				P5.setUsername("tom");
+				P5.setPassword("1234");
+				P5.setName("tom");
+				P5.setPhoneNumber((long) 520555555);
+
+				//making person for checking phone number exceptions
+				Customer C5 = new Customer();
+				C5.setUsername("paul");
+				C5.setPassword("4321");
+				C5.setName("paul");
+				C5.setCreditCardNumber("1111222233334444");
 				
 				System.out.println("\nTesting hiring an Employee that has already been hired.");
 				//testing exception of hiring an employee that has already been hired

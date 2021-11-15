@@ -38,8 +38,18 @@ public class Person {
 	public long getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(long phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setPhoneNumber(Long phoneNumber) {
+		int length =  String.valueOf(phoneNumber).length();
+
+		if ( length == 10 ) {
+			this.phoneNumber = phoneNumber;
+		}
+		if (length < 10) {
+			System.out.println("This phone number is invalid, phone number is not long enough");
+		}
+		if (length > 10) {
+			System.out.println("This phone number is invalid, phone number is too long");
+		}
 	}
 	
 	
