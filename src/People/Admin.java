@@ -72,11 +72,26 @@ public class Admin extends Person {
 				InventoryItem I = new InventoryItem();
 				I.setName(item);
 
-				System.out.println(item + " was successfully added");
-				return(item + " was successfully added");
+				System.out.println(item + " was successfully added.");
+				return(item + " was successfully added.");
 			}
 		}
 		return("Error occured in adding inventory item.");
+	}
+	
+	public String removeInventory(String item) {
+		for (int i = 0; i < GroceryStore.InventoryList.size(); i++) {
+			if (GroceryStore.InventoryList.get(i).getName().equals(item)) {
+				GroceryStore.InventoryList.remove(i);
+				System.out.println(item + " was successfully removed.");
+				return(item + " was successfully removed.");
+			}
+			else {
+				System.out.println(item + " cannot be removed because the item is not in the Grocery Store.");
+				return(item + " cannot be removed because the item is not in the Grocery Store.");
+			}
+		}
+		return("Error occured in removing inventory item.");
 	}
 	
 }

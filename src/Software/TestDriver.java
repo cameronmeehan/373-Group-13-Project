@@ -64,5 +64,11 @@ public class TestDriver {
 				System.out.println("\nTesting adding an existing inventory item to the store.");
 				A1.addInventory("Whole Milk");
 				
+				System.out.println("\nTesting removing an inventory item in the store.");
+				A1.removeInventory("Whole Milk");
+				
+				System.out.println("\nTesting removing an inventory item that is not in the store.");
+				A1.removeInventory("Peanut Butter");
+				
 	}
 }
