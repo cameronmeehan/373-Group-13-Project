@@ -16,8 +16,8 @@ public class Admin extends Person {
 				Employee E = new Employee();
 				E.setName(aName);
 
-				System.out.println(aName + " was succsesfully hired");
-				return(aName + " was succsesfully hired");
+				System.out.println(aName + " was successfully hired");
+				return(aName + " was successfully hired");
 		
 		
 			}
@@ -33,7 +33,7 @@ public class Admin extends Person {
 				GroceryStore.EmployeeList.remove(i);
 				
 				System.out.println(aName + " was fired succsesfully");
-				return(aName + " was fired succsesfully");
+				return(aName + " was fired successfully");
 				
 			}
 			
@@ -72,8 +72,8 @@ public class Admin extends Person {
 				InventoryItem I = new InventoryItem();
 				I.setName(item);
 
-				System.out.println(item + " was succsesfully added");
-				return(item + " was succsesfully added");
+				System.out.println(item + " was successfully added");
+				return(item + " was successfully added");
 			}
 		}
 		return("Error occured in adding inventory item.");
