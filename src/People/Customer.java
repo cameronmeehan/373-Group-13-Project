@@ -24,11 +24,13 @@ public class Customer extends Person {
 		}
 		
 		if(length < 16) {
-			System.out.println("This credit card number is invalid, card number is not long enough");	
+			System.out.println("This credit card number is invalid, card number is not long enough.");	
 		}
 		
 		if(length > 16) {
-			System.out.println("This credit card number is invalid, card number is too long");
+			System.out.println("This credit card number is invalid, card number is too long.");
 		}
 	}
+
+	
 }

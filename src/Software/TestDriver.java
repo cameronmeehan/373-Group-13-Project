@@ -43,6 +43,13 @@ public class TestDriver {
 				C1.setUsername("patty");
 				C1.setPassword("1234");
 				C1.setName("patty");
+								
+				//making person for checking phone number exceptions
+				Customer C5 = new Customer();
+				C5.setUsername("paul");
+				C5.setPassword("4321");
+				C5.setName("paul");
+				C5.setCreditCardNumber("1111222233334444");
 				
 				//making InventoryItem for testing
 				Dairy I1 = new Dairy();
@@ -50,20 +57,6 @@ public class TestDriver {
 				I1.setStock(10);
 				I1.setMilk(true);
 				I1.setPrice(3.5);
-				
-				//Making customer for checking credit card exceptions
-				People.Person P5 = new People.Person();
-				P5.setUsername("tom");
-				P5.setPassword("1234");
-				P5.setName("tom");
-				P5.setPhoneNumber((long) 520555555);
-
-				//making person for checking phone number exceptions
-				Customer C5 = new Customer();
-				C5.setUsername("paul");
-				C5.setPassword("4321");
-				C5.setName("paul");
-				C5.setCreditCardNumber("1111222233334444");
 				
 				System.out.println("\nTesting hiring an Employee that has already been hired.");
 				//testing exception of hiring an employee that has already been hired
@@ -85,6 +78,18 @@ public class TestDriver {
 				
 				System.out.println("\nTesting removing an inventory item that is not in the store.");
 				A1.removeInventory("Peanut Butter");
+				
+				System.out.println("\nTesting setting a Persons phone number to a number over range.");
+				C5.setPhoneNumber("1234567890123");
+				
+				System.out.println("\nTesting setting a Persons phone number to a number under range");
+				C5.setPhoneNumber("12345678");
+				
+				System.out.println("\nTesting setting a Customers credit card number to a number over range");
+				C5.setCreditCardNumber("12345678901234567");
+				
+				System.out.println("\nTesting setting a Customers credit card number to a number under range");
+				C5.setCreditCardNumber("123456789012");
 				
 	}
 }
