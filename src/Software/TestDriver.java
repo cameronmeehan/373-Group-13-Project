@@ -6,6 +6,8 @@ import People.Customer;
 import People.Employee;
 import Tangibles.Dairy;
 import Tangibles.GroceryStore;
+import Tangibles.Produce;
+
 import java.math.BigInteger;
 
 //this can be used to test program functions without a GUI being initialized
@@ -57,6 +59,24 @@ public class TestDriver {
 				I1.setStock(10);
 				I1.setMilk(true);
 				I1.setPrice(3.5);
+				
+				Produce I2 = new Produce();
+				I2.setName("Apple");
+				I2.setStock(12);
+				I2.setFruit(true);
+				I2.setPrice(1.3);
+				
+				
+				//making checkout object
+				Checkout ck = new Checkout();
+				
+				System.out.println("\nTesting checkout functions.");
+				//testing checkout functions
+				ck.addItemToCart(I1);
+				ck.addItemToCart(I2);
+				ck.removeItem(I1);
+				ck.checkout();
+				
 				
 				System.out.println("\nTesting hiring an Employee that has already been hired.");
 				//testing exception of hiring an employee that has already been hired
