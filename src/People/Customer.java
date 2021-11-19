@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 import Tangibles.GroceryStore;
 
-public class Customer extends Person {
+public class Customer extends Person implements java.io.Serializable {
 
 	private String creditCardNumber;
 	

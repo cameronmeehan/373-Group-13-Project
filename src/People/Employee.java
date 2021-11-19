@@ -2,7 +2,7 @@ package People;
 
 import Tangibles.GroceryStore;
 
-public class Employee extends Person{
+public class Employee extends Person implements java.io.Serializable {
 	
 	//need to set all fields
 	private double hourlyRate;

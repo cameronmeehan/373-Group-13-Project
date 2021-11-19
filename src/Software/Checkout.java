@@ -18,10 +18,13 @@ import Tangibles.Meat;
 import Tangibles.Produce;
 
 //This is our in Person and online Checkout class
-public class Checkout {
+public class Checkout implements java.io.Serializable  {
 	private double discount;
 	private ArrayList<InventoryItem> CartList = new ArrayList<InventoryItem>();
-
+	
+	public Checkout() {
+		GroceryStore.CheckoutList.add(this);
+	}
 	
 	public void addItemToCart (InventoryItem aItem) {
 		CartList.add(aItem);

@@ -1,6 +1,6 @@
 package Tangibles;
 
-public class Dairy extends InventoryItem {
+public class Dairy extends InventoryItem implements java.io.Serializable  {
 	private boolean milk;
 	private boolean cheese;
 	private boolean yogurt;

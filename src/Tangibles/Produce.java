@@ -1,6 +1,6 @@
 package Tangibles;
 
-public class Produce extends InventoryItem  {
+public class Produce extends InventoryItem implements java.io.Serializable   {
 	private boolean fruit;
 	private boolean vegetable;
 	

@@ -2,7 +2,7 @@ package People;
 
 import java.math.BigInteger;
 
-public class Person {
+public class Person implements java.io.Serializable  {
 
 	protected String name;
 	protected String address;

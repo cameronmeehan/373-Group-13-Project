@@ -1,6 +1,6 @@
 package Tangibles;
 
-public class InventoryItem {
+public class InventoryItem implements java.io.Serializable  {
 	
 	private String name;
 	private int stock; //number in stock

@@ -476,7 +476,9 @@ public class AdminPanel extends JPanel implements ActionListener{
 		
 		//listener for exit button
 		if(e.getSource() == exit) {
+			top.serialize();
 			top.runLogin();
+			
 		}
 	}
 	
