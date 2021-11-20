@@ -49,11 +49,23 @@ public class GroceryStoreProgramGUI extends JFrame{
 		//setting size of window
 		setSize(1000,1000);
 		
-		//adding close button
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//adding close button that serializes
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent closeEvent) {
+				closeProgram();
+			}
+			
+		});
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		this.runLogin();
 		
+	}
+	
+	public void closeProgram() {
+		serialize();
+		
+		System.exit(0);
 	}
 	
 	//loads login
