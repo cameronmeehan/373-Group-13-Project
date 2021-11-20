@@ -1,5 +1,7 @@
 package People;
 
+import java.util.ArrayList;
+
 import Tangibles.GroceryStore;
 import Tangibles.InventoryItem;
 // test comment
@@ -99,4 +101,12 @@ public class Admin extends Person implements java.io.Serializable  {
 		return("Error occured in removing inventory item.");
 	}
 	
+	public ArrayList<InventoryItem> topSale(){
+		
+		ArrayList<InventoryItem> tempList = new ArrayList<InventoryItem>();
+		
+		//implement way to find top 5 sellers and 
+		
+		return(tempList);
+	}
 }

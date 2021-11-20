@@ -85,6 +85,10 @@ public class AdminPanel extends JPanel implements ActionListener{
 	private JTextField ibarcode;
 	private JTextField iprice;
 	
+	//sales anyalist stuff
+	private JDialog analysisPopUp;
+	private JButton analysisPopUpButton;
+	
 	public AdminPanel(GroceryStoreProgramGUI aTop) {
 		//creating an object of GroceryStorePanelGUI so its methods can be used to change panels
 		top = aTop;
@@ -175,6 +179,10 @@ public class AdminPanel extends JPanel implements ActionListener{
 		ibarcode = new JTextField("Barcode");
 		iprice = new JTextField("Price");
 		
+		//analyst stuff
+		analysisPopUpButton = new JButton("Sales Analysis");
+		analysisPopUpButton.addActionListener(this);
+		
 		//setBounds is (x, y, width, height)
 		//general
 		ListBanner.setBounds(100,25,200,30);
@@ -236,6 +244,9 @@ public class AdminPanel extends JPanel implements ActionListener{
 		ibarcode.setBounds(500,690,250,30);
 		iprice.setBounds(500,720,250,30);
 		
+		//sales analysis 
+		analysisPopUpButton.setBounds(650,850,150,100);
+		
 		//adding stuff to panel
 		add(EmployeeScroll); add(ListBanner); add(HireBanner); add(HireEmployee); add(wageBanner);
 		add(inventoryBanner); add(IListBanner); add(inventoryAddBanner); add(name);
@@ -246,7 +257,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		add(iname); add(istock); add(iaisle); add(ibarcode); add(exit); add(fireBanner);
 		add(fireName); add(fireButton); add(iRemoveLabel); add(iRemoveButton); add(iRemoveName);
 		add(iChangedLabel); add(iChangeName); add(iChangeNewPrice); add(iChangePrice); add(iViewPrice);
-		add(iprice);
+		add(iprice); add(analysisPopUpButton); 
 		
 	}
 	
@@ -323,7 +334,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 				if(GroceryStore.InventoryList.get(i).getName().equals(iRemoveName.getText())) {
 					
 					GroceryStore.InventoryList.remove(i);
-					
+					JOptionPane.showMessageDialog(null, iRemoveName.getText() + " will no longer be sold.");
 					InventoryScroll.setViewportView(ListFromArrayInventory(GroceryStore.InventoryList));
 					
 				}
@@ -436,7 +447,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 				
 					
 			}
-		
+			JOptionPane.showMessageDialog(null, iname.getText() + " will now be sold.");
 			InventoryScroll.setViewportView(ListFromArrayInventory(GroceryStore.InventoryList));
 			
 		}
@@ -479,6 +490,11 @@ public class AdminPanel extends JPanel implements ActionListener{
 			top.runLogin();
 			
 		}
+		
+		//sales analysis listener
+		if(e.getSource() == analysisPopUpButton) {
+			salesAnalysisWindow();
+		}
 	}
 	
 	//these turn array lists into lists that can be used by a JScrollPane
@@ -503,6 +519,34 @@ public class AdminPanel extends JPanel implements ActionListener{
 		JList lTemp = new JList(temp);
 		return(lTemp);
 	}	
+	
+	public void salesAnalysisWindow() {
+		
+		//view of top 5 selling items and their price
+		//click any item and see its sale history
+		
+		JScrollPane SalesInventoryScroll = new JScrollPane(ListFromArrayInventory(GroceryStore.InventoryList));
+		SalesInventoryScroll.setBounds(500,150,200,400);
+		
+		//SalesInventoryScroll.setViewportView(ListFromArrayInventory(GroceryStore.InventoryList));
+		//view of top 5 selling items and their price
+		//click any item and see its sale history
+
+		ArrayList<InventoryItem> topSalesList = new ArrayList<InventoryItem>();
+		
+		analysisPopUp = new JDialog();
+		analysisPopUp.setSize(800,800);
+		analysisPopUp.setLayout(null);
+		
+		JLabel analysisHeading = new JLabel("Top Selling Items");
+		analysisHeading.setBounds(300,50,100,50);
+		
+		topSalesList = GroceryStoreProgramGUI.currentAdminUser.topSale();
+		
+		analysisPopUp.add(analysisHeading);
+		analysisPopUp.add(SalesInventoryScroll);
+		analysisPopUp.setVisible(true);
+	}
 	
 	
 	

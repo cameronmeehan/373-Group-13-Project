@@ -25,6 +25,7 @@ import Tangibles.InventoryItem;
 
 public class GroceryStoreProgramGUI extends JFrame{
 
+	//these fields are added to alow GUI panel classes to use the current users members
 	public static Admin currentAdminUser;
 	public static Employee currentEmployeeUser;
 	public static Customer currentCustomerUser;
@@ -41,7 +42,7 @@ public class GroceryStoreProgramGUI extends JFrame{
 		// if statement to check if object was retained through last serialization
 		if(GroceryStore.AdminList.size() == 0) {
 		Admin A1 = new Admin();
-		A1.setUsername("admin");
+		A1.setUsername("Username");
 		A1.setPassword("Password");
 		GroceryStore.AdminList.add(A1);
 		}
@@ -182,7 +183,6 @@ public class GroceryStoreProgramGUI extends JFrame{
 			exception.printStackTrace();
 		}
 		
-		//change to add all
 		GroceryStore.AdminList = (ArrayList)lStore.tempAdminList.clone();
 		GroceryStore.EmployeeList = (ArrayList)lStore.tempEmployeeList.clone();
 		GroceryStore.CustomerList = (ArrayList)lStore.tempCustomerList.clone();
