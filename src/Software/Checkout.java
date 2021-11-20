@@ -17,13 +17,22 @@ import Tangibles.InventoryItem;
 import Tangibles.Meat;
 import Tangibles.Produce;
 
+//possible added feature, GroceryStore.java holds int of balance and money is added when sales are made
+//money would have to be removed from balance when inventory is added to stock by employee
+
 //This is our in Person and online Checkout class
 public class Checkout implements java.io.Serializable  {
 	private double discount;
-	private ArrayList<InventoryItem> CartList = new ArrayList<InventoryItem>();
+	private boolean saleCompleted; // needed for working with checkout objects later
+	private ArrayList<InventoryItem> CartList = new ArrayList<InventoryItem>(); // list of objects added to cart to purchase
 	
 	public Checkout() {
 		GroceryStore.CheckoutList.add(this);
+		saleCompleted = true;
+	}
+	
+	public boolean getSaleCompleted() {
+		return(saleCompleted);
 	}
 	
 	public void addItemToCart (InventoryItem aItem) {
@@ -39,6 +48,7 @@ public class Checkout implements java.io.Serializable  {
 		price = price - this.discount;
 	}
 	
+	//finish checkout
 	public void checkout () {
 		for(int i = 0; i < GroceryStore.InventoryList.size(); i++) {
 			
@@ -49,6 +59,7 @@ public class Checkout implements java.io.Serializable  {
 			
 			
 		}
+		saleCompleted = true;
 		
 	}
 }
