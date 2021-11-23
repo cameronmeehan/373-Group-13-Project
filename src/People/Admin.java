@@ -136,7 +136,7 @@ public class Admin extends Person implements java.io.Serializable  {
 			}
 		}
 		//setting top list
-		if(tempList.size() <= 5) {
+		if(tempList.size() >= 5) {
 		for(int i = 0; i < 5; i++) {
 			int tempI;
 			tempI = Collections.max(occurences);

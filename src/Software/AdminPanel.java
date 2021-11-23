@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 
 import People.Admin;
 import People.Customer;
@@ -525,25 +526,35 @@ public class AdminPanel extends JPanel implements ActionListener{
 		//view of top 5 selling items and their price
 		//click any item and see its sale history
 		
+		//scroll of inventory
 		JScrollPane SalesInventoryScroll = new JScrollPane(ListFromArrayInventory(GroceryStore.InventoryList));
-		SalesInventoryScroll.setBounds(500,150,200,400);
+		SalesInventoryScroll.setBounds(500,150,200,300);
 		
-		//SalesInventoryScroll.setViewportView(ListFromArrayInventory(GroceryStore.InventoryList));
-		//view of top 5 selling items and their price
-		//click any item and see its sale history
-
+		//getting top 5 sellers list
 		ArrayList<InventoryItem> topSalesList = new ArrayList<InventoryItem>();
+		topSalesList = GroceryStoreProgramGUI.currentAdminUser.topSale();
+		String topSalesString = "";
+		for(int i = 0; i < topSalesList.size(); i++) {
+			topSalesString.concat(topSalesList.get(i).getName());
+			topSalesString.concat("/n");
+		}
 		
+		//opening new window
 		analysisPopUp = new JDialog();
 		analysisPopUp.setSize(800,800);
 		analysisPopUp.setLayout(null);
 		
-		JLabel analysisHeading = new JLabel("Top Selling Items");
-		analysisHeading.setBounds(300,50,100,50);
+		//labels
 		
-		topSalesList = GroceryStoreProgramGUI.currentAdminUser.topSale();
+		JLabel analysisHeading2 = new JLabel("Pick item to view Sales analysis:");
+		analysisHeading2.setBounds(500,50,300,50);
+		JLabel topFive = new JLabel(topSalesString);
+		TitledBorder topFiveBorder = new TitledBorder("Top Five Sales:");
+		topFive.setBounds(100,50,300,300);
+		topFive.setBorder(topFiveBorder);
 		
-		analysisPopUp.add(analysisHeading);
+		analysisPopUp.add(topFive);
+		analysisPopUp.add(analysisHeading2);
 		analysisPopUp.add(SalesInventoryScroll);
 		analysisPopUp.setVisible(true);
 	}
