@@ -6,9 +6,11 @@ import People.Customer;
 import People.Employee;
 import Tangibles.Dairy;
 import Tangibles.GroceryStore;
+import Tangibles.InventoryItem;
 import Tangibles.Produce;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 //this can be used to test program functions without a GUI being initialized
 public class TestDriver {
@@ -61,22 +63,61 @@ public class TestDriver {
 				I1.setPrice(3.5);
 				
 				Produce I2 = new Produce();
-				I2.setName("Apple");
+				I2.setName("Orange");
 				I2.setStock(12);
 				I2.setFruit(true);
 				I2.setPrice(1.3);
 				
 				
-				//making checkout object
-				Checkout ck = new Checkout();
+				Produce I3 = new Produce();
+				I3.setName("Apple");
+				I3.setStock(12);
+				I3.setFruit(true);
+				I3.setPrice(1.3);
+				
+				Produce I4 = new Produce();
+				I4.setName("Banana");
+				I4.setStock(12);
+				I4.setFruit(true);
+				I4.setPrice(1.3);
+				
+				Produce I5 = new Produce();
+				I5.setName("Coconut");
+				I5.setStock(12);
+				I5.setFruit(true);
+				I5.setPrice(1.3);
+				
+				
 				
 				System.out.println("\nTesting checkout functions.");
 				//testing checkout functions
+				Checkout ck = new Checkout();
 				ck.addItemToCart(I1);
 				ck.addItemToCart(I2);
-				ck.removeItem(I1);
+				ck.addItemToCart(I2);
+				ck.addItemToCart(I5);
+				ck.addItemToCart(I4);
+				ck.addItemToCart(I4);
+				ck.addItemToCart(I1);
 				ck.checkout();
 				
+				Checkout ck2 = new Checkout();
+				ck2.addItemToCart(I1);
+				ck.addItemToCart(I1);
+				ck2.addItemToCart(I2);
+				ck2.addItemToCart(I3);
+				ck2.addItemToCart(I2);
+				ck2.addItemToCart(I3);
+				ck2.addItemToCart(I3);
+				ck2.addItemToCart(I2);
+				ck2.checkout();
+				
+				//should be I2, I1, I3, I4, I5
+				ArrayList<InventoryItem> topFiveSales = A1.topSale();
+				System.out.println("\nTesting top 5 selling items function.");
+					for(int i = 0; i < topFiveSales.size(); i++) {
+						System.out.println("#"+ (i+1) + " Top Sale: "+ topFiveSales.get(i).getName() + " at " + topFiveSales.get(i).getPrice() + "$.");
+					}
 				
 				System.out.println("\nTesting hiring an Employee that has already been hired.");
 				//testing exception of hiring an employee that has already been hired

@@ -28,7 +28,7 @@ public class Checkout implements java.io.Serializable  {
 	
 	public Checkout() {
 		GroceryStore.CheckoutList.add(this);
-		saleCompleted = true;
+		saleCompleted = false;
 	}
 	
 	public boolean getSaleCompleted() {
@@ -39,6 +39,9 @@ public class Checkout implements java.io.Serializable  {
 		CartList.add(aItem);
 	}
 	
+	public ArrayList<InventoryItem> getCartList() {
+		return(CartList);
+	}
 	public void removeItem (InventoryItem aItem ) {
 		CartList.remove(aItem);
 	}

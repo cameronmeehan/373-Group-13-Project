@@ -1,6 +1,8 @@
 package People;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import Tangibles.GroceryStore;
 import Tangibles.InventoryItem;
@@ -103,10 +105,46 @@ public class Admin extends Person implements java.io.Serializable  {
 	
 	public ArrayList<InventoryItem> topSale(){
 		
+		ArrayList<Integer> occurences = new ArrayList<Integer>();
+		
 		ArrayList<InventoryItem> tempList = new ArrayList<InventoryItem>();
+		ArrayList<InventoryItem> topList = new ArrayList<InventoryItem>();
 		
-		//implement way to find top 5 sellers and 
+		//get list of all types Inventory Items sold
+		for(int i = 0; i < GroceryStore.CheckoutList.size(); i++) {
+			
+			if(GroceryStore.CheckoutList.get(i).getSaleCompleted() == true) {
+				
+				for(int j = 0; j< GroceryStore.CheckoutList.get(i).getCartList().size(); j++) {
+					
+					if(tempList.contains(GroceryStore.CheckoutList.get(i).getCartList().get(j)) == false) {
+						
+						tempList.add(GroceryStore.CheckoutList.get(i).getCartList().get(j));
+					}
+				}				
+			}	
+		}
 		
-		return(tempList);
+		//set occurences list with amount of accurences of each item
+		for(int k = 0; k < tempList.size(); k++) {
+		
+			for(int i = 0; i < GroceryStore.CheckoutList.size(); i++) {
+			
+				if(GroceryStore.CheckoutList.get(i).getSaleCompleted() == true) {
+					occurences.add(Collections.frequency(GroceryStore.CheckoutList.get(i).getCartList(), tempList.get(k)));
+				}
+			}
+		}
+		//setting top list
+		if(tempList.size() <= 5) {
+		for(int i = 0; i < 5; i++) {
+			int tempI;
+			tempI = Collections.max(occurences);
+			tempI = occurences.indexOf(tempI);
+			topList.add(tempList.get(tempI));
+			tempList.remove(tempI);
+		}
+		
+		return(topList);
 	}
 }
