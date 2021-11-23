@@ -144,6 +144,7 @@ public class Admin extends Person implements java.io.Serializable  {
 			topList.add(tempList.get(tempI));
 			tempList.remove(tempI);
 		}
+		}
 		
 		return(topList);
 	}
