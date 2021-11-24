@@ -9,7 +9,12 @@ import Tangibles.InventoryItem;
 // test comment
 public class Admin extends Person implements java.io.Serializable  {
 
+	public Admin() {
+		GroceryStore.AdminList.add(this);
+	}
+		
 	public String hireEmployee(String aName) {
+	
 		for(int i = 0; i < GroceryStore.EmployeeList.size(); i++) {
 			if(GroceryStore.EmployeeList.get(i).getName().equals(aName)) {
 				System.out.println(aName + " cannot be hired because they are already employed by the Grocery Store.");
@@ -106,35 +111,41 @@ public class Admin extends Person implements java.io.Serializable  {
 	public ArrayList<InventoryItem> topSale(){
 		
 		ArrayList<Integer> occurences = new ArrayList<Integer>();
-		
 		ArrayList<InventoryItem> tempList = new ArrayList<InventoryItem>();
 		ArrayList<InventoryItem> topList = new ArrayList<InventoryItem>();
 		
-		//get list of all types Inventory Items sold
+		//run through all checkout lists
 		for(int i = 0; i < GroceryStore.CheckoutList.size(); i++) {
+			
 			
 			if(GroceryStore.CheckoutList.get(i).getSaleCompleted() == true) {
 				
+				// run through all cart lists
 				for(int j = 0; j< GroceryStore.CheckoutList.get(i).getCartList().size(); j++) {
 					
-					if(tempList.contains(GroceryStore.CheckoutList.get(i).getCartList().get(j)) == false) {
-						
-						tempList.add(GroceryStore.CheckoutList.get(i).getCartList().get(j));
+						//adding to templist and occurance list when it is first one in list
+						if(tempList.contains(GroceryStore.CheckoutList.get(i).getCartList().get(j)) == false) {
+							tempList.add(GroceryStore.CheckoutList.get(i).getCartList().get(j));
+							occurences.add(GroceryStore.CheckoutList.get(i).getQuantity(GroceryStore.CheckoutList.get(i).getCartList().get(j)));
+							
+							System.out.println("debug- added a first to templist");
+						}
+						//adding to accurance list when there is a matching item
+						else {
+							//find index of matching element
+							
+							int temp = occurences.get(tempList.indexOf(GroceryStore.CheckoutList.get(i).getCartList().get(j)));
+							temp = temp + GroceryStore.CheckoutList.get(i).getQuantity(GroceryStore.CheckoutList.get(i).getCartList().get(j));
+							occurences.add(tempList.indexOf(GroceryStore.CheckoutList.get(i).getCartList().get(j)), temp);
+							
+							System.out.println("debug- adjusted quantity of occurences");
+						}
 					}
 				}				
 			}	
-		}
 		
-		//set occurences list with amount of accurences of each item
-		for(int k = 0; k < tempList.size(); k++) {
 		
-			for(int i = 0; i < GroceryStore.CheckoutList.size(); i++) {
-			
-				if(GroceryStore.CheckoutList.get(i).getSaleCompleted() == true) {
-					occurences.add(Collections.frequency(GroceryStore.CheckoutList.get(i).getCartList(), tempList.get(k)));
-				}
-			}
-		}
+		
 		//setting top list
 		if(tempList.size() >= 5) {
 		for(int i = 0; i < 5; i++) {

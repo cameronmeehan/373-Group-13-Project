@@ -22,7 +22,6 @@ public class TestDriver {
 				Admin A1 = new Admin();
 				A1.setUsername("admin");
 				A1.setPassword("Password");
-				GroceryStore.AdminList.add(A1);
 				
 				//making employees for testing
 				Employee E1 = new Employee();
@@ -103,7 +102,7 @@ public class TestDriver {
 				
 				Checkout ck2 = new Checkout();
 				ck2.addItemToCart(I1);
-				ck.addItemToCart(I1);
+				ck2.addItemToCart(I1);
 				ck2.addItemToCart(I2);
 				ck2.addItemToCart(I3);
 				ck2.addItemToCart(I2);
@@ -112,12 +111,12 @@ public class TestDriver {
 				ck2.addItemToCart(I2);
 				ck2.checkout();
 				
-				//should be I2, I1, I3, I4, I5
-				ArrayList<InventoryItem> topFiveSales = A1.topSale();
-				System.out.println("\nTesting top 5 selling items function.");
-					for(int i = 0; i < topFiveSales.size(); i++) {
-						System.out.println("#"+ (i+1) + " Top Sale: "+ topFiveSales.get(i).getName() + " at " + topFiveSales.get(i).getPrice() + "$.");
-					}
+//				//should be I2, I1, I3, I4, I5
+//				ArrayList<InventoryItem> topFiveSales = A1.topSale();
+//				System.out.println("\nTesting top 5 selling items function.");
+//					for(int i = 0; i < topFiveSales.size(); i++) {
+//						System.out.println("#"+ (i+1) + " Top Sale: "+ topFiveSales.get(i).getName() + " at " + topFiveSales.get(i).getPrice() + "$.");
+//					}
 				
 				System.out.println("\nTesting hiring an Employee that has already been hired.");
 				//testing exception of hiring an employee that has already been hired

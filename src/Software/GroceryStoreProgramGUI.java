@@ -22,10 +22,11 @@ import People.Person;
 import Tangibles.Dairy;
 import Tangibles.GroceryStore;
 import Tangibles.InventoryItem;
+import Tangibles.Produce;
 
 public class GroceryStoreProgramGUI extends JFrame{
 
-	//these fields are added to alow GUI panel classes to use the current users members
+	//these fields are added to allow GUI panel classes to use the current users members
 	public static Admin currentAdminUser;
 	public static Employee currentEmployeeUser;
 	public static Customer currentCustomerUser;
@@ -44,8 +45,8 @@ public class GroceryStoreProgramGUI extends JFrame{
 		Admin A1 = new Admin();
 		A1.setUsername("Username");
 		A1.setPassword("Password");
-		GroceryStore.AdminList.add(A1);
 		}
+		
 		
 		//setting size of window
 		setSize(1000,1000);
@@ -117,7 +118,7 @@ public class GroceryStoreProgramGUI extends JFrame{
 		
 	}
 	
-	//loads checkout page
+	//loads customer checkout page
 	public void runCheckout() {
 		//clears last panel
 		getContentPane().removeAll();

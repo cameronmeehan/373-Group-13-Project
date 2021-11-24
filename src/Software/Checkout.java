@@ -22,9 +22,11 @@ import Tangibles.Produce;
 
 //This is our in Person and online Checkout class
 public class Checkout implements java.io.Serializable  {
-	private double discount;
+	private double discount = 0; // 0-100, percent representitive
+	private double checkoutCost = 0; //final cost of sale
 	private boolean saleCompleted; // needed for working with checkout objects later
 	private ArrayList<InventoryItem> CartList = new ArrayList<InventoryItem>(); // list of objects added to cart to purchase
+	private ArrayList<Integer> quantity = new ArrayList<Integer>(); // quantity of items, at same index as items in CartList
 	
 	public Checkout() {
 		GroceryStore.CheckoutList.add(this);
@@ -36,32 +38,76 @@ public class Checkout implements java.io.Serializable  {
 	}
 	
 	public void addItemToCart (InventoryItem aItem) {
-		CartList.add(aItem);
+		int temp;
+		int current =0;
+
+		if(CartList.contains(aItem)) {
+			temp = CartList.indexOf(aItem);
+			current = quantity.get(temp);
+			current = current + 1;
+			quantity.set(temp, current);
+		}
+		else {
+			temp = 1;
+			CartList.add(aItem);
+			quantity.add(temp);
+			quantity.set(quantity.size() -1, 1);
+		}
 	}
 	
 	public ArrayList<InventoryItem> getCartList() {
 		return(CartList);
 	}
+	
 	public void removeItem (InventoryItem aItem ) {
+		int temp;
+		temp = CartList.indexOf(aItem);
+		quantity.remove(temp);
 		CartList.remove(aItem);
+		
 	}
 	
-	public void applyDiscount (double discount, double price) {
-		this.discount = price / (this.discount * .01);
-		price = price - this.discount;
+	//set discount
+	public void setDiscount(double aDiscount) {
+		discount = aDiscount;
 	}
+	
+	public int getQuantity(InventoryItem aItem) {
+		int temp;
+		temp = CartList.indexOf(aItem);
+		temp = quantity.get(temp);
+		return(temp);
+	}
+	
+	//discount calculation at checkout
+	public void applyDiscount () {
+		if(discount != 0) {
+		discount = checkoutCost * (discount * .01);
+		checkoutCost = checkoutCost - discount;
+		}
+	}
+		
 	
 	//finish checkout
 	public void checkout () {
-		for(int i = 0; i < GroceryStore.InventoryList.size(); i++) {
+		for(int i = 0; i < CartList.size(); i++) {
 			
-			if(CartList.contains(GroceryStore.InventoryList.get(i))){
-				GroceryStore.InventoryList.get(i).decreaseStock(1);
-				System.out.println(GroceryStore.InventoryList.get(i).getName() + " was purchased at " + GroceryStore.InventoryList.get(i).getPrice() + "$." );
+			if(GroceryStore.InventoryList.contains(CartList.get(i))){
+				GroceryStore.InventoryList.get(GroceryStore.InventoryList.indexOf(CartList.get(i))).decreaseStock(quantity.get(i));
+				
+				System.out.println(quantity.get(i) + " " + CartList.get(i).getName() + " was purchased at "
+				+ CartList.get(i).getPrice() + "$ each." );
+				
+				checkoutCost = checkoutCost + (CartList.get(i).getPrice() * quantity.get(i));
+			}
+			else {
+				System.out.println(CartList.get(i).getName() + " is not in stock to sell");
 			}
 			
 			
 		}
+		applyDiscount();
+		System.out.println("Total cost of sale = " + checkoutCost + "$. \n" );
 		saleCompleted = true;
 		
 	}
