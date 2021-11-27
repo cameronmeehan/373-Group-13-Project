@@ -36,6 +36,7 @@ public class GroceryStoreProgramGUI extends JFrame{
 		super("Grocery Store Program");
 		
 		
+		
 		//deSerialization
 		deSerialize();
 		
@@ -46,7 +47,6 @@ public class GroceryStoreProgramGUI extends JFrame{
 		A1.setUsername("Username");
 		A1.setPassword("Password");
 		}
-		
 		
 		//setting size of window
 		setSize(1000,1000);

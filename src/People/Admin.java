@@ -110,6 +110,7 @@ public class Admin extends Person implements java.io.Serializable  {
 	
 	public ArrayList<InventoryItem> topSale(){
 		
+		
 		ArrayList<Integer> occurences = new ArrayList<Integer>();
 		ArrayList<InventoryItem> tempList = new ArrayList<InventoryItem>();
 		ArrayList<InventoryItem> topList = new ArrayList<InventoryItem>();
@@ -128,7 +129,6 @@ public class Admin extends Person implements java.io.Serializable  {
 							tempList.add(GroceryStore.CheckoutList.get(i).getCartList().get(j));
 							occurences.add(GroceryStore.CheckoutList.get(i).getQuantity(GroceryStore.CheckoutList.get(i).getCartList().get(j)));
 							
-							System.out.println("debug- added a first to templist");
 						}
 						//adding to accurance list when there is a matching item
 						else {
@@ -136,9 +136,8 @@ public class Admin extends Person implements java.io.Serializable  {
 							
 							int temp = occurences.get(tempList.indexOf(GroceryStore.CheckoutList.get(i).getCartList().get(j)));
 							temp = temp + GroceryStore.CheckoutList.get(i).getQuantity(GroceryStore.CheckoutList.get(i).getCartList().get(j));
-							occurences.add(tempList.indexOf(GroceryStore.CheckoutList.get(i).getCartList().get(j)), temp);
+							occurences.set(tempList.indexOf(GroceryStore.CheckoutList.get(i).getCartList().get(j)), temp);
 							
-							System.out.println("debug- adjusted quantity of occurences");
 						}
 					}
 				}				
@@ -154,9 +153,60 @@ public class Admin extends Person implements java.io.Serializable  {
 			tempI = occurences.indexOf(tempI);
 			topList.add(tempList.get(tempI));
 			tempList.remove(tempI);
+			occurences.remove(tempI);
 		}
 		}
 		
-		return(topList);
+		return (topList);
+	}
+
+	public int getQuantitySold(InventoryItem aItem) {
+		int quantity;
+		
+		ArrayList<Integer> occurences = new ArrayList<Integer>();
+		ArrayList<InventoryItem> tempList = new ArrayList<InventoryItem>();
+		
+		//run through all checkout lists
+		for(int i = 0; i < GroceryStore.CheckoutList.size(); i++) {
+			
+			
+			if(GroceryStore.CheckoutList.get(i).getSaleCompleted() == true) {
+				
+				// run through all cart lists
+				for(int j = 0; j< GroceryStore.CheckoutList.get(i).getCartList().size(); j++) {
+					
+						//adding to templist and occurance list when it is first one in list
+						if(tempList.contains(GroceryStore.CheckoutList.get(i).getCartList().get(j)) == false) {
+							tempList.add(GroceryStore.CheckoutList.get(i).getCartList().get(j));
+							occurences.add(GroceryStore.CheckoutList.get(i).getQuantity(GroceryStore.CheckoutList.get(i).getCartList().get(j)));
+							
+						}
+						//adding to accurance list when there is a matching item
+						else {
+							//find index of matching element
+							
+							int temp = occurences.get(tempList.indexOf(GroceryStore.CheckoutList.get(i).getCartList().get(j)));
+							temp = temp + GroceryStore.CheckoutList.get(i).getQuantity(GroceryStore.CheckoutList.get(i).getCartList().get(j));
+							occurences.set(tempList.indexOf(GroceryStore.CheckoutList.get(i).getCartList().get(j)), temp);
+							
+						}
+					}
+				}				
+			}
+		quantity = occurences.get(tempList.indexOf(aItem));
+		
+		return quantity;
+	}
+
+	public String getSalesInfo(String aItemName) {
+		InventoryItem tempItem = null;
+		for(int i = 0; i < GroceryStore.InventoryList.size(); i++) {
+			if(GroceryStore.InventoryList.get(i).getName().equals(aItemName)) {
+				tempItem = GroceryStore.InventoryList.get(i);
+			}
+		}
+		
+		
+		return(aItemName +" sold " + getQuantitySold(tempItem) + " times at " + tempItem.getPrice() + "$. " + tempItem.getStock() + " currently in stock." );
 	}
 }

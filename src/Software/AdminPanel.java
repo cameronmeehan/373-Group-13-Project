@@ -89,6 +89,9 @@ public class AdminPanel extends JPanel implements ActionListener{
 	//sales anyalist stuff
 	private JDialog analysisPopUp;
 	private JButton analysisPopUpButton;
+	private JButton invCheck;
+	private JLabel invView;
+	private JScrollPane SalesInventoryScroll;
 	
 	public AdminPanel(GroceryStoreProgramGUI aTop) {
 		//creating an object of GroceryStorePanelGUI so its methods can be used to change panels
@@ -496,6 +499,13 @@ public class AdminPanel extends JPanel implements ActionListener{
 		if(e.getSource() == analysisPopUpButton) {
 			salesAnalysisWindow();
 		}
+		
+		//Sales JDialog view button
+		if(e.getSource() == invCheck) {
+			String tempInv;
+			tempInv = (String) Inventories.getSelectedValue();
+			invView.setText(GroceryStoreProgramGUI.currentAdminUser.getSalesInfo(tempInv));
+		}
 	}
 	
 	//these turn array lists into lists that can be used by a JScrollPane
@@ -523,39 +533,58 @@ public class AdminPanel extends JPanel implements ActionListener{
 	
 	public void salesAnalysisWindow() {
 		
-		//view of top 5 selling items and their price
-		//click any item and see its sale history
+
+	//Item sales check
+		Inventories = ListFromArrayInventory(GroceryStore.InventoryList);
+		SalesInventoryScroll = new JScrollPane(Inventories);
+		invCheck = new JButton();
+		invView = new JLabel();
+		invCheck.setText("Enter");
+		invCheck.addActionListener(this);
+	
+		JLabel analysisHeading2 = new JLabel("Pick item to view Sales analysis:");
 		
-		//scroll of inventory
-		JScrollPane SalesInventoryScroll = new JScrollPane(ListFromArrayInventory(GroceryStore.InventoryList));
-		SalesInventoryScroll.setBounds(500,150,200,300);
+		analysisHeading2.setBounds(100,300,300,50);
+		SalesInventoryScroll.setBounds(100,350,200,300);
+		invCheck.setBounds(150,700,100,30);
+		invView.setBounds(400,350,500,30);
 		
+		
+	//top sales list
 		//getting top 5 sellers list
 		ArrayList<InventoryItem> topSalesList = new ArrayList<InventoryItem>();
 		topSalesList = GroceryStoreProgramGUI.currentAdminUser.topSale();
-		String topSalesString = "";
-		for(int i = 0; i < topSalesList.size(); i++) {
-			topSalesString.concat(topSalesList.get(i).getName());
-			topSalesString.concat("/n");
+		
+		JLabel topFive = new JLabel();
+		
+		//making top five label
+		if(topSalesList.size() == 5) {
+		topFive.setText("<html><center>" + GroceryStoreProgramGUI.currentAdminUser.getQuantitySold(topSalesList.get(0)) + " " + topSalesList.get(0).getName() + "s sold at " + topSalesList.get(0).getPrice() + "$ <br>" +
+				GroceryStoreProgramGUI.currentAdminUser.getQuantitySold(topSalesList.get(1)) + " " + topSalesList.get(1).getName() + "s sold at " + topSalesList.get(1).getPrice() + "$ <br>" +
+				GroceryStoreProgramGUI.currentAdminUser.getQuantitySold(topSalesList.get(2)) + " " + topSalesList.get(2).getName() + "s sold at " + topSalesList.get(2).getPrice() + "$ <br>" +
+				GroceryStoreProgramGUI.currentAdminUser.getQuantitySold(topSalesList.get(3)) + " " + topSalesList.get(3).getName() + "s sold at " + topSalesList.get(3).getPrice() + "$ <br>" + 
+				GroceryStoreProgramGUI.currentAdminUser.getQuantitySold(topSalesList.get(4)) + " " + topSalesList.get(4).getName() + "s sold at " + topSalesList.get(4).getPrice() + "$ <br>" );
 		}
-		
-		//opening new window
-		analysisPopUp = new JDialog();
-		analysisPopUp.setSize(800,800);
-		analysisPopUp.setLayout(null);
-		
-		//labels
-		
-		JLabel analysisHeading2 = new JLabel("Pick item to view Sales analysis:");
-		analysisHeading2.setBounds(500,50,300,50);
-		JLabel topFive = new JLabel(topSalesString);
+		else {
+			topFive.setText("Five items have not been sold yet...");
+		}
+		topFive.setBounds(300,50,150,150);
 		TitledBorder topFiveBorder = new TitledBorder("Top Five Sales:");
-		topFive.setBounds(100,50,300,300);
 		topFive.setBorder(topFiveBorder);
 		
+		
+		
+		
+	//setting up window
+		analysisPopUp = new JDialog();
+		analysisPopUp.setTitle("Sales Analysis Page");
+		analysisPopUp.setSize(800,800);
+		analysisPopUp.setLayout(null);
 		analysisPopUp.add(topFive);
 		analysisPopUp.add(analysisHeading2);
 		analysisPopUp.add(SalesInventoryScroll);
+		analysisPopUp.add(invCheck);
+		analysisPopUp.add(invView);
 		analysisPopUp.setVisible(true);
 	}
 	
