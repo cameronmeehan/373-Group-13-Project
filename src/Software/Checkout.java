@@ -33,8 +33,18 @@ public class Checkout implements java.io.Serializable  {
 		saleCompleted = false;
 	}
 	
+	//returns if sale has been completed
 	public boolean getSaleCompleted() {
 		return(saleCompleted);
+	}
+	
+	//add item by object or barcode
+	public void addItemToCart(long abarcode) {
+		for(int i= 0; i < GroceryStore.InventoryList.size(); i++) {
+			if(GroceryStore.InventoryList.get(i).getBarcode() == abarcode) {
+				addItemToCart(GroceryStore.InventoryList.get(i));
+			}
+		}
 	}
 	
 	public void addItemToCart (InventoryItem aItem) {
@@ -55,10 +65,12 @@ public class Checkout implements java.io.Serializable  {
 		}
 	}
 	
+	//returns carList
 	public ArrayList<InventoryItem> getCartList() {
 		return(CartList);
 	}
 	
+	//remove item by object or barcode
 	public void removeItem (InventoryItem aItem ) {
 		int temp;
 		temp = CartList.indexOf(aItem);
@@ -67,11 +79,20 @@ public class Checkout implements java.io.Serializable  {
 		
 	}
 	
+	public void removeItem(int abarcode) {
+		for(int i= 0; i < GroceryStore.InventoryList.size(); i++) {
+			if(GroceryStore.InventoryList.get(i).getBarcode() == abarcode) {
+				removeItem(GroceryStore.InventoryList.get(i));
+			}
+		}
+	}
+	
 	//set discount
 	public void setDiscount(double aDiscount) {
 		discount = aDiscount;
 	}
 	
+	//returns quanity in cart of an object given
 	public int getQuantity(InventoryItem aItem) {
 		int temp;
 		temp = CartList.indexOf(aItem);
@@ -87,7 +108,6 @@ public class Checkout implements java.io.Serializable  {
 		}
 	}
 		
-	
 	//finish checkout
 	public void checkout () {
 		for(int i = 0; i < CartList.size(); i++) {
