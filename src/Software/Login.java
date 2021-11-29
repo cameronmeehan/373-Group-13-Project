@@ -31,10 +31,10 @@ public class Login extends JPanel implements ActionListener{
 		
 		//setBounds is (x, y, width, height)
 		heading.setBounds(150,10,800, 50);
-		loginButton.setBounds(400,600,200,100);
-		makeNewAcount.setBounds(400,800,200,100);
-		username.setBounds(350,400,300,40);
-		password.setBounds(350,500,300,40);
+		loginButton.setBounds(400,300,200,100);
+		makeNewAcount.setBounds(400,450,200,100);
+		username.setBounds(350,100,300,40);
+		password.setBounds(350,200,300,40);
 		
 		//add(stuff to panel)
 		add(username);

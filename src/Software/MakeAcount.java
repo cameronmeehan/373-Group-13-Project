@@ -42,14 +42,14 @@ public class MakeAcount extends JPanel implements ActionListener {
 		
 		//setBounds is (x, y, width, height)
 		heading.setBounds(350,10,800, 50);
-		makeAcount.setBounds(400,800,200,100);
-		name.setBounds(350,400,300,40);
-		username.setBounds(350,450,300,40);
-		password.setBounds(350,500,300,40);
-		phoneNumber.setBounds(350, 550, 300, 40);
-		address.setBounds(350, 600,300, 40);
-		creditNum.setBounds(350, 650, 300, 40);
-		exit.setBounds(850,850,100,100);
+		makeAcount.setBounds(400,450,200,50);
+		name.setBounds(350,100,300,40);
+		username.setBounds(350,150,300,40);
+		password.setBounds(350,200,300,40);
+		phoneNumber.setBounds(350, 250, 300, 40);
+		address.setBounds(350, 300,300, 40);
+		creditNum.setBounds(350, 350, 300, 40);
+		exit.setBounds(850,500,100,100);
 		
 		//add(stuff to panel)
 		add(username);

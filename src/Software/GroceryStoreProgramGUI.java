@@ -48,8 +48,9 @@ public class GroceryStoreProgramGUI extends JFrame{
 		A1.setPassword("Password");
 		}
 		
+		
 		//setting size of window
-		setSize(1000,1000);
+		setSize(1000,800);
 		
 		//adding close button that serializes
 		addWindowListener(new WindowAdapter() {
