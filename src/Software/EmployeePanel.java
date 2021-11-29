@@ -39,7 +39,7 @@ public class EmployeePanel extends JPanel implements ActionListener{
 		
 		
 		//general page stuff allignment
-		exitButton.setBounds(850,850,100,100);
+		exitButton.setBounds(850,600,100,100);
 		
 		
 		//adding stuff to page
