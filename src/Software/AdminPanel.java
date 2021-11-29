@@ -22,6 +22,7 @@ import Tangibles.Produce;
 public class AdminPanel extends JPanel implements ActionListener{
 
 	//general program stuff
+	private JScrollPane PageScrollPane;
 	private GroceryStoreProgramGUI top;
 	private JList Employees; //list of employees
 	private JScrollPane EmployeeScroll; //scroll the employee list
