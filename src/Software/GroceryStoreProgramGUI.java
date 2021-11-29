@@ -99,8 +99,10 @@ public class GroceryStoreProgramGUI extends JFrame{
 		//clears last panel
 		getContentPane().removeAll();
 		
-		AdminPanel adminP;
-		adminP = new AdminPanel(this);
+		
+		AdminPanel adminP = new AdminPanel(this);
+		
+		
 		add(adminP);
 		setVisible(true);
 	}

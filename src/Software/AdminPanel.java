@@ -100,8 +100,8 @@ public class AdminPanel extends JPanel implements ActionListener{
 		
 		// needed to set new layouts of buttons, panels, ect... on the page
 		setLayout(null);
-		
 		//general stuff
+		//PageScrollPane = new JScrollPane();
 		EmployeeScroll = new JScrollPane(ListFromArrayEmployee(GroceryStore.EmployeeList));
 		ListBanner = new JLabel("Employee List:");
 		IListBanner = new JLabel("Invetory List:");
@@ -190,67 +190,69 @@ public class AdminPanel extends JPanel implements ActionListener{
 		
 		//setBounds is (x, y, width, height)
 		//general
-		ListBanner.setBounds(100,25,200,30);
-		EmployeeScroll.setBounds(100,65, 200,90);
-		IListBanner.setBounds(500,25,200,30);
-		InventoryScroll.setBounds(500,65,200,90);
-		exit.setBounds(850,850,100,100);
+		ListBanner.setBounds(100,0,200,30);
+		EmployeeScroll.setBounds(100,25,250,70);
+		IListBanner.setBounds(500,0,200,30);
+		InventoryScroll.setBounds(500,25,250,70);
+		exit.setBounds(820,650,150,100);
 		
 		//employee hire
-		HireBanner.setBounds(100,500,400,40);
-		name.setBounds(100,540,300,30);
-		username.setBounds(100,570,300,30);
-		password.setBounds(100,600,300,30);
-		address.setBounds(100,630,300,30);
-		phoneNum.setBounds(100,660,300,30);
-		payRate.setBounds(100,690,300,30);
-		HireEmployee.setBounds(100,800,100,40);
+		HireBanner.setBounds(100,325,400,40);
+		name.setBounds(100,380,300,30);
+		username.setBounds(100,410,300,30);
+		password.setBounds(100,440,300,30);
+		address.setBounds(100,470,300,30);
+		phoneNum.setBounds(100,500,300,30);
+		payRate.setBounds(100,530,300,30);
+		HireEmployee.setBounds(100,600,100,40);
+		
+
 		
 		//employee fire
-		fireBanner.setBounds(100,380,400,40);
-		fireName.setBounds(100,420,100,30);
-		fireButton.setBounds(300,420,100,40);
+		fireBanner.setBounds(100,250,400,40);
+		fireName.setBounds(100,285,100,30);
+		fireButton.setBounds(300,285,100,40);
 		
 		//wage
-		wageBanner.setBounds(100,150,400,40);
-		chooseName.setBounds(100, 200, 150, 30);
-		newPayRate.setBounds(300,200,150,30);
-		employeeInfo.setBounds(100,240,400,40);
-		viewEmployee.setBounds(100,280,100,40);
-		wageChange.setBounds(300,280,100,40);
+		wageBanner.setBounds(100,90,400,40);
+		chooseName.setBounds(100, 125, 150, 30);
+		newPayRate.setBounds(300,125,150,30);
+		employeeInfo.setBounds(100,150,400,40);
+		viewEmployee.setBounds(100,200,100,40);
+		wageChange.setBounds(300,200,100,40);
 		
 		//inventory price modify
-		inventoryBanner.setBounds(500,150,400,40);
-		iChangedLabel.setBounds(500,240,400,40);
-		iChangeName.setBounds(500,200,150,30);
-		iChangeNewPrice.setBounds(700,200,150,30);
-		iChangePrice.setBounds(700,280,100,40);
-		iViewPrice.setBounds(500,280,100,40);
+		inventoryBanner.setBounds(500,90,400,40);
+		iChangedLabel.setBounds(500,150,400,40);
+		iChangeName.setBounds(500,125,150,30);
+		iChangeNewPrice.setBounds(700,125,150,30);
+		iChangePrice.setBounds(700,200,100,40);
+		iViewPrice.setBounds(500,200,100,40);
 		
 		//inventory remove
-		iRemoveLabel.setBounds(500,380,400,40);
-		iRemoveName.setBounds(500,420,100,30);
-		iRemoveButton.setBounds(700,420,100,40);
+		iRemoveLabel.setBounds(500,250,400,40);
+		iRemoveName.setBounds(500,285,100,30);
+		iRemoveButton.setBounds(700,285,100,40);
 		
 		//inventory add
-		inventoryAddBanner.setBounds(500,500,400,40);
-		inventoryTypeDairy.setBounds(500,550,100,40);
-		inventoryTypeMeat.setBounds(600,550,100,40);
-		inventoryTypeDryGood.setBounds(700,550,100,40);
-		inventoryTypeProduce.setBounds(800,550,100,40);
-		IAddButton.setBounds(500,800,100,40);
-		iAdd1.setBounds(800,600,100,40);
-		iAdd2.setBounds(800,650,100,40);
-		iAdd3.setBounds(800,700,100,40);
-		iAdd4.setBounds(800,750,100,40);
-		iname.setBounds(500,600,250,30);
-		istock.setBounds(500,630,250,30);
-		iaisle.setBounds(500,660,250,30);
-		ibarcode.setBounds(500,690,250,30);
-		iprice.setBounds(500,720,250,30);
+		inventoryAddBanner.setBounds(500,325,400,40);
+		inventoryTypeDairy.setBounds(500,370,100,40);
+		inventoryTypeMeat.setBounds(600,370,100,40);
+		inventoryTypeDryGood.setBounds(700,370,100,40);
+		inventoryTypeProduce.setBounds(800,370,100,40);
+		IAddButton.setBounds(500,600,100,40);
+		iAdd1.setBounds(800,410,100,40);
+		iAdd2.setBounds(800,460,100,40);
+		iAdd3.setBounds(800,510,100,40);
+		iAdd4.setBounds(800,560,100,40);
+		iname.setBounds(500,420,250,30);
+		istock.setBounds(500,450,250,30);
+		iaisle.setBounds(500,480,250,30);
+		ibarcode.setBounds(500,510,250,30);
+		iprice.setBounds(500,540,250,30);
 		
 		//sales analysis 
-		analysisPopUpButton.setBounds(650,850,150,100);
+		analysisPopUpButton.setBounds(650,650,150,100);
 		
 		//adding stuff to panel
 		add(EmployeeScroll); add(ListBanner); add(HireBanner); add(HireEmployee); add(wageBanner);
@@ -263,6 +265,8 @@ public class AdminPanel extends JPanel implements ActionListener{
 		add(fireName); add(fireButton); add(iRemoveLabel); add(iRemoveButton); add(iRemoveName);
 		add(iChangedLabel); add(iChangeName); add(iChangeNewPrice); add(iChangePrice); add(iViewPrice);
 		add(iprice); add(analysisPopUpButton); 
+		
+		
 		
 	}
 	
