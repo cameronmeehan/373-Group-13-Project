@@ -14,8 +14,12 @@ public class Login extends JPanel implements ActionListener{
 	private GroceryStoreProgramGUI top;
 	
 	public Login(GroceryStoreProgramGUI aTop) {
-		top = aTop;
+		
+		//needed to make page scrollable
+		setPreferredSize(new Dimension(900,700));
 		setLayout(null);
+		
+		top = aTop;
 		heading = new JLabel("Welcome to the Grocery Store Program");
 		loginButton = new JButton("Login");
 		makeNewAcount = new JButton("Make New Customer Acount");

@@ -35,8 +35,6 @@ public class GroceryStoreProgramGUI extends JFrame{
 	public GroceryStoreProgramGUI() {
 		super("Grocery Store Program");
 		
-		
-		
 		//deSerialization
 		deSerialize();
 		
@@ -47,7 +45,6 @@ public class GroceryStoreProgramGUI extends JFrame{
 		A1.setUsername("Username");
 		A1.setPassword("Password");
 		}
-		
 		
 		//setting size of window
 		setSize(1000,800);
@@ -76,9 +73,16 @@ public class GroceryStoreProgramGUI extends JFrame{
 		//clears last panel
 		getContentPane().removeAll();
 		
+		
 		Login login;
 		login = new Login(this);
-		add(login);
+		
+		JScrollPane sPane = new JScrollPane(login);
+		sPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		sPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		
+		
+		getContentPane().add(sPane);
 		setVisible(true);
 		
 	}
@@ -90,7 +94,12 @@ public class GroceryStoreProgramGUI extends JFrame{
 		
 		MakeAcount makeacount;
 		makeacount = new MakeAcount(this);
-		add(makeacount);
+		
+		JScrollPane sPane = new JScrollPane(makeacount);
+		sPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		sPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		
+		add(sPane);
 		setVisible(true);
 	}
 	
@@ -102,8 +111,11 @@ public class GroceryStoreProgramGUI extends JFrame{
 		
 		AdminPanel adminP = new AdminPanel(this);
 		
+		JScrollPane sPane = new JScrollPane(adminP);
+		sPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		sPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
-		add(adminP);
+		add(sPane);
 		setVisible(true);
 	}
 	
@@ -114,7 +126,12 @@ public class GroceryStoreProgramGUI extends JFrame{
 		
 		EmployeePanel ePanel;
 		ePanel = new EmployeePanel(this);
-		add(ePanel);
+		
+		JScrollPane sPane = new JScrollPane(ePanel);
+		sPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		sPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		
+		add(sPane);
 		setVisible(true);
 
 		
@@ -128,7 +145,12 @@ public class GroceryStoreProgramGUI extends JFrame{
 		
 		CheckoutPanel cPanel;
 		cPanel = new CheckoutPanel(this);
-		add(cPanel);
+		
+		JScrollPane sPane = new JScrollPane(cPanel);
+		sPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		sPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		
+		add(sPane);
 		setVisible(true);
 		
 	}

@@ -23,6 +23,7 @@ public class MakeAcount extends JPanel implements ActionListener {
 	public MakeAcount(GroceryStoreProgramGUI aTop) {
 		top = aTop;
 		setLayout(null);
+		setPreferredSize(new Dimension(900,700));
 		heading = new JLabel("Please enter your information.");
 		makeAcount = new JButton("Make Acount");
 		username = new JTextField("Username");

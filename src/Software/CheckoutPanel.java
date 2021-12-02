@@ -1,4 +1,5 @@
 package Software;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,7 +17,7 @@ public class CheckoutPanel extends JPanel implements ActionListener{
 	public CheckoutPanel(GroceryStoreProgramGUI aTop) {
 		top = aTop;
 		setLayout(null);
-		
+		setPreferredSize(new Dimension(900,700));
 		//general page stuff creation
 		exitButton = new JButton("Exit");
 		exitButton.addActionListener(this);
