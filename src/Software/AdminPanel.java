@@ -22,7 +22,7 @@ import Tangibles.Produce;
 public class AdminPanel extends JPanel implements ActionListener{
 
 	//general program stuff
-	private JScrollPane PageScrollPane;
+	private JScrollBar PageScrollBar;
 	private GroceryStoreProgramGUI top;
 	private JList Employees; //list of employees
 	private JScrollPane EmployeeScroll; //scroll the employee list
@@ -98,10 +98,13 @@ public class AdminPanel extends JPanel implements ActionListener{
 		//creating an object of GroceryStorePanelGUI so its methods can be used to change panels
 		top = aTop;
 		
+		
 		// needed to set new layouts of buttons, panels, ect... on the page
+		setPreferredSize(new Dimension(900,700));
 		setLayout(null);
 		//general stuff
-		//PageScrollPane = new JScrollPane();
+		PageScrollBar = new JScrollBar();
+		PageScrollBar.setVisible(true);
 		EmployeeScroll = new JScrollPane(ListFromArrayEmployee(GroceryStore.EmployeeList));
 		ListBanner = new JLabel("Employee List:");
 		IListBanner = new JLabel("Invetory List:");
@@ -264,7 +267,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		add(iname); add(istock); add(iaisle); add(ibarcode); add(exit); add(fireBanner);
 		add(fireName); add(fireButton); add(iRemoveLabel); add(iRemoveButton); add(iRemoveName);
 		add(iChangedLabel); add(iChangeName); add(iChangeNewPrice); add(iChangePrice); add(iViewPrice);
-		add(iprice); add(analysisPopUpButton); 
+		add(iprice); add(analysisPopUpButton); add(PageScrollBar);
 		
 		
 		
@@ -549,10 +552,10 @@ public class AdminPanel extends JPanel implements ActionListener{
 	
 		JLabel analysisHeading2 = new JLabel("Pick item to view Sales analysis:");
 		
-		analysisHeading2.setBounds(100,300,300,50);
-		SalesInventoryScroll.setBounds(100,350,200,300);
-		invCheck.setBounds(150,700,100,30);
-		invView.setBounds(400,350,500,30);
+		analysisHeading2.setBounds(25,160,400,50);
+		SalesInventoryScroll.setBounds(25,200,200,300);
+		invCheck.setBounds(100,520,100,30);
+		invView.setBounds(250,350,500,30);
 		
 		
 	//top sales list
@@ -573,7 +576,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		else {
 			topFive.setText("Five items have not been sold yet...");
 		}
-		topFive.setBounds(300,50,150,150);
+		topFive.setBounds(25,25,400,150);
 		TitledBorder topFiveBorder = new TitledBorder("Top Five Sales:");
 		topFive.setBorder(topFiveBorder);
 		
@@ -583,13 +586,16 @@ public class AdminPanel extends JPanel implements ActionListener{
 	//setting up window
 		analysisPopUp = new JDialog();
 		analysisPopUp.setTitle("Sales Analysis Page");
-		analysisPopUp.setSize(800,800);
+		analysisPopUp.setSize(600,600);
 		analysisPopUp.setLayout(null);
+		
+		JScrollPane tPane = new JScrollPane();
 		analysisPopUp.add(topFive);
 		analysisPopUp.add(analysisHeading2);
 		analysisPopUp.add(SalesInventoryScroll);
 		analysisPopUp.add(invCheck);
 		analysisPopUp.add(invView);
+		
 		analysisPopUp.setVisible(true);
 	}
 	

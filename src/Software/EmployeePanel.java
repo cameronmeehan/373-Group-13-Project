@@ -1,4 +1,5 @@
 package Software;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,7 +32,7 @@ public class EmployeePanel extends JPanel implements ActionListener{
 	public EmployeePanel(GroceryStoreProgramGUI aTop) {
 		top = aTop;
 		setLayout(null);
-		
+		setPreferredSize(new Dimension(900,700));
 		//general page stuff creation
 		exitButton = new JButton("Exit");
 		exitButton.addActionListener(this);
