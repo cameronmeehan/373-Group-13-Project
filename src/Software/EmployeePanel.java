@@ -1,9 +1,7 @@
 package Software;
-<<<<<<< HEAD
 import java.awt.Dimension;
-=======
+
 import java.awt.Font;
->>>>>>> f52ed2b1b3fd17e7681a39d9ff4876fd4a15332e
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
