@@ -1,5 +1,9 @@
 package Software;
+<<<<<<< HEAD
 import java.awt.Dimension;
+=======
+import java.awt.Font;
+>>>>>>> f52ed2b1b3fd17e7681a39d9ff4876fd4a15332e
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,6 +16,7 @@ public class EmployeePanel extends JPanel implements ActionListener{
 	// general program stuff
 	private GroceryStoreProgramGUI top;
 	private JButton exitButton; //Button to exit
+	private JLabel welcomeBanner;
 	
 	// inventory stuff
 	private JButton stockFunction;
@@ -37,10 +42,13 @@ public class EmployeePanel extends JPanel implements ActionListener{
 		exitButton = new JButton("Exit");
 		exitButton.addActionListener(this);
 		
+		welcomeBanner = new JLabel("Welcome " + GroceryStoreProgramGUI.currentEmployeeUser.getName());
+		welcomeBanner.setFont(new Font("Calibri", Font.BOLD, 40));
+		add(welcomeBanner);
 		
-		
-		//general page stuff allignment
+		//general page stuff alignment
 		exitButton.setBounds(850,600,100,100);
+		welcomeBanner.setBounds(200, 50, 500, 50);
 		
 		
 		//adding stuff to page
