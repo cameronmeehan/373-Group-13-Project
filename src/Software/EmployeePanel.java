@@ -20,7 +20,7 @@ public class EmployeePanel extends JPanel implements ActionListener{
 	private JLabel welcomeBanner;
 	
 	// inventory stuff
-	private JButton stockFunction;
+	private JLabel stockFunction;
 	private JLabel InventoryBanner;
 	private JTextField iIncreaseStock;
 	private JTextField iRemoveStock;
@@ -58,7 +58,11 @@ public class EmployeePanel extends JPanel implements ActionListener{
 		InventoryBanner = new JLabel("List of Inventory:");
 		InventoryBanner.setFont(new Font("Calibri", Font.BOLD, 40));
 		InventoryScroll = new JScrollPane(ListFromArrayInventory(GroceryStore.InventoryList));
-		add(InventoryBanner); add(InventoryScroll);
+		stockFunction = new JLabel("Stock Inventory");
+		stockFunction.setFont(new Font("Calibri", Font.BOLD, 40));
+		iIncreaseStock = new JTextField("Quantity");
+		iRemoveStock = new JTextField("Quantity");
+		add(InventoryBanner); add(InventoryScroll); add(stockFunction); add(iIncreaseStock); add(iRemoveStock);
 		
 		//general page stuff alignment
 		exitButton.setBounds(850,600,100,100);
@@ -68,6 +72,9 @@ public class EmployeePanel extends JPanel implements ActionListener{
 		changeYears.setBounds(600, 150, 250, 35);
 		InventoryBanner.setBounds(200, 200, 350, 40);
 		InventoryScroll.setBounds(200, 245, 250, 75);
+		stockFunction.setBounds(200, 350, 350, 50);
+		iIncreaseStock.setBounds(200, 405, 250, 50);
+		iRemoveStock.setBounds(200, 460, 250, 50);
 		
 		
 		//adding stuff to page
@@ -84,8 +91,7 @@ public class EmployeePanel extends JPanel implements ActionListener{
 			remove(YearBanner);
 			add(YearBanner);
 		}
-		
-		
+				
 	}
 	
 	public JList ListFromArrayInventory(ArrayList<InventoryItem> aList) {
