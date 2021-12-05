@@ -112,7 +112,8 @@ public class Checkout implements java.io.Serializable  {
 	public void checkout () {
 		for(int i = 0; i < CartList.size(); i++) {
 			
-			if(GroceryStore.InventoryList.contains(CartList.get(i))){
+			if(GroceryStore.InventoryList.contains(CartList.get(i)) & (GroceryStore.InventoryList.get(GroceryStore.InventoryList.indexOf(CartList.get(i))).getStock() != 0)){
+				
 				GroceryStore.InventoryList.get(GroceryStore.InventoryList.indexOf(CartList.get(i))).decreaseStock(quantity.get(i));
 				
 				System.out.println(quantity.get(i) + " " + CartList.get(i).getName() + " was purchased at "
@@ -122,6 +123,7 @@ public class Checkout implements java.io.Serializable  {
 			}
 			else {
 				System.out.println(CartList.get(i).getName() + " is not in stock to sell");
+				JOptionPane.showMessageDialog(null, CartList.get(i).getName() + " is not in stock to sell");
 			}
 			
 			
