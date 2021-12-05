@@ -19,13 +19,26 @@ public class EmployeePanel extends JPanel implements ActionListener{
 	private JButton exitButton; //Button to exit
 	private JLabel welcomeBanner;
 	
+	// Employee Info
+	private JLabel employeeUN;
+	private JLabel employeePW;
+	private JLabel employeeAd;
+	private JLabel employeePN;
+	private JLabel employeePR;
+	private JTextField employeeChangeUN;
+	private JTextField employeeChangePW;
+	private JTextField employeeChangeAd;
+	private JTextField employeeChangePN;
+	private JTextField employeeChangePR;
+	private JButton editUN;
+	private JButton editPW;
+	private JButton editAd;
+	private JButton editPN;
+	private JButton editPR;
+	
 	// inventory stuff
 	private JLabel stockFunction;
 	private JLabel InventoryBanner;
-	//private JTextField iIncreaseStock;
-	//private JTextField iRemoveStock;
-	//private JButton stockIncrease;
-	//private JButton stockRemove;
 	private JScrollPane InventoryScroll;
 	private JLabel checkQuantity;
 	private JTextField checkInventory;
@@ -35,6 +48,10 @@ public class EmployeePanel extends JPanel implements ActionListener{
 	
 	// Stock pop up
 	private JDialog stockPopUp;
+	private JButton iIncreaseStock;
+	private JButton iRemoveStock;
+	private JTextField amount;
+	private JLabel newAmount;
 	
 	// in-person checkout
 	private JButton inPersonCheckout;
@@ -69,17 +86,22 @@ public class EmployeePanel extends JPanel implements ActionListener{
 		add(quantity);
 
 		//general page stuff alignment
-		exitButton.setBounds(850,600,100,100);
+		exitButton.setBounds(850,620,80, 80);
 		welcomeBanner.setBounds(200, 50, 500, 50);
-		InventoryBanner.setBounds(200, 200, 350, 40);
-		InventoryScroll.setBounds(200, 245, 250, 75);
-		stockFunction.setBounds(200, 350, 350, 50);
-		checkQuantity.setBounds(200, 405, 300, 50);
-		checkInventory.setBounds(200, 460, 250, 50);
-		quantityButton.setBounds(455, 460, 200, 50);
-		changeStock.setBounds(660, 460, 200, 50);
-		quantity.setBounds(200, 515, 250, 50);
+		InventoryBanner.setBounds(200, 300, 350, 40);
+		InventoryScroll.setBounds(200, 345, 250, 75);
+		stockFunction.setBounds(200, 450, 350, 50);
+		checkQuantity.setBounds(200, 505, 300, 50);
+		checkInventory.setBounds(200, 560, 250, 50);
+		quantityButton.setBounds(455, 560, 200, 50);
+		changeStock.setBounds(660, 560, 200, 50);
+		quantity.setBounds(200, 615, 250, 50);
 		
+		// inPersonCheckout
+		inPersonCheckout = new JButton("In Person Checkout");
+		inPersonCheckout.setBounds(645, 620, 180, 80);
+		inPersonCheckout.addActionListener(this);
+		add(inPersonCheckout);
 		
 		//adding stuff to page
 		add(exitButton);
@@ -106,13 +128,29 @@ public class EmployeePanel extends JPanel implements ActionListener{
 			stockPopUpWindow();
 		}
 		
-		//if (e.getSource() == iIncreaseStock) {
-			//for(int i = 0; i < GroceryStore.InventoryList.size(); i++) {
-				//if(GroceryStore.InventoryList.get(i).getName().equals(checkInventory.getText())) {
-					
-				//}
-			//}
-		//}
+		if (e.getSource() == iIncreaseStock) {
+			for(int i = 0; i < GroceryStore.InventoryList.size(); i++) {
+				if(GroceryStore.InventoryList.get(i).getName().equals(checkInventory.getText())) {
+					GroceryStore.InventoryList.get(i).increaseStock(Integer.parseInt(amount.getText()));
+					newAmount.setText("New Stock: " + GroceryStore.InventoryList.get(i).getStock());
+				}
+				stockPopUp.add(newAmount);
+			}
+		}
+		
+		if (e.getSource() == iRemoveStock) {
+			for(int i = 0; i < GroceryStore.InventoryList.size(); i++) {
+				if(GroceryStore.InventoryList.get(i).getName().equals(checkInventory.getText())) {
+					GroceryStore.InventoryList.get(i).decreaseStock(Integer.parseInt(amount.getText()));
+					newAmount.setText("New Stock: " + GroceryStore.InventoryList.get(i).getStock());
+				}
+				stockPopUp.add(newAmount);
+			}
+		}
+		
+		if (e.getSource() == inPersonCheckout) {
+			top.runCheckout();
+		}
 		
 				
 	}
@@ -140,18 +178,21 @@ public class EmployeePanel extends JPanel implements ActionListener{
 		stockBanner.setBounds(100, 100, 450, 50);
 		stockPopUp.add(stockBanner);
 		
-		JTextField amount = new JTextField("Amount");
+		amount = new JTextField("Amount");
 		amount.setBounds(100, 155, 200, 50);
 		stockPopUp.add(amount);
 		
-		JButton iIncreaseStock = new JButton("Increase");
-		JButton iRemoveStock = new JButton("Remove");
+		iIncreaseStock = new JButton("Increase");
+		iRemoveStock = new JButton("Remove");
 		iIncreaseStock.setBounds(305, 155, 150, 50);
 		iRemoveStock.setBounds(460, 155, 150, 50);
 		iIncreaseStock.addActionListener(this);
 		iRemoveStock.addActionListener(this);
 		stockPopUp.add(iIncreaseStock);
 		stockPopUp.add(iRemoveStock);
+		newAmount = new JLabel();
+		newAmount.setFont(new Font("Calibri", Font.BOLD, 20));
+		newAmount.setBounds(100, 250, 300, 50);
 		
 	}
 	
