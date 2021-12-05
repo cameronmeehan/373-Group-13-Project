@@ -22,19 +22,17 @@ public class EmployeePanel extends JPanel implements ActionListener{
 	// Employee Info
 	private JLabel employeeUN;
 	private JLabel employeePW;
-	private JLabel employeeAd;
+	private JLabel employeeAD;
 	private JLabel employeePN;
 	private JLabel employeePR;
 	private JTextField employeeChangeUN;
 	private JTextField employeeChangePW;
-	private JTextField employeeChangeAd;
+	private JTextField employeeChangeAD;
 	private JTextField employeeChangePN;
-	private JTextField employeeChangePR;
 	private JButton editUN;
 	private JButton editPW;
-	private JButton editAd;
+	private JButton editAD;
 	private JButton editPN;
-	private JButton editPR;
 	
 	// inventory stuff
 	private JLabel stockFunction;
@@ -103,13 +101,76 @@ public class EmployeePanel extends JPanel implements ActionListener{
 		inPersonCheckout.addActionListener(this);
 		add(inPersonCheckout);
 		
+		// Employee Info
+		employeeUN = new JLabel("Username: " + GroceryStoreProgramGUI.currentEmployeeUser.getUsername());
+		employeePW = new JLabel("Password: " + GroceryStoreProgramGUI.currentEmployeeUser.getPassword());
+		employeeAD = new JLabel("Address: " + GroceryStoreProgramGUI.currentEmployeeUser.getAddress());
+		employeePN = new JLabel("Phone Number: " + GroceryStoreProgramGUI.currentEmployeeUser.getPhoneNumber());
+		employeePR = new JLabel("Pay Rate: " + GroceryStoreProgramGUI.currentEmployeeUser.getHourlyRate());
+		employeeChangeUN = new JTextField("New UserName");
+		employeeChangePW = new JTextField("New Password");
+		employeeChangeAD = new JTextField("New Address");
+		employeeChangePN = new JTextField("New Phone Number");
+		editUN = new JButton("Edit");
+		editPW = new JButton("Edit");
+		editAD = new JButton("Edit");
+		editPN = new JButton("Edit");
+		
+		employeeUN.setBounds(50, 105, 375, 30);
+		employeePW.setBounds(50, 140, 375, 30);
+		employeeAD.setBounds(50, 175, 375, 30);
+		employeePN.setBounds(50, 210, 375, 30);
+		employeePR.setBounds(50, 245, 375, 30);
+		employeeChangeUN.setBounds(430, 105, 375, 30);
+		employeeChangePW.setBounds(430, 140, 375, 30);
+		employeeChangeAD.setBounds(430, 175, 375, 30);
+		employeeChangePN.setBounds(430, 210, 375, 30);
+		editUN.setBounds(835, 105, 60, 30);
+		editPW.setBounds(835, 140, 60, 30);
+		editAD.setBounds(835, 175, 60, 30);
+		editPN.setBounds(835, 210, 60, 30);
+		editUN.addActionListener(this);
+		editPW.addActionListener(this);
+		editAD.addActionListener(this);
+		editPN.addActionListener(this);
+		
+		add(employeeUN);add(employeePW); add(employeeAD); add(employeePN); add(employeePR);
+		add(employeeChangeUN); add(employeeChangePW); add(employeeChangeAD); add(employeeChangePN);
+		add(editUN); add(editPW); add(editAD); add(editPN);
+		
 		//adding stuff to page
 		add(exitButton);
 	}
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == exitButton) {
+		if (e.getSource() == exitButton) {
 			top.runLogin();
 		}
+		
+		// Employee Info
+		if (e.getSource() == editUN) {
+			GroceryStoreProgramGUI.currentEmployeeUser.setUsername(employeeChangeUN.getText());
+			remove(employeeUN);
+			add(employeeUN);
+		}
+		
+		if (e.getSource() == editPW) {
+			GroceryStoreProgramGUI.currentEmployeeUser.setPassword(employeeChangePW.getText());
+			remove(employeePW);
+			add(employeePW);
+		}
+		
+		if (e.getSource() == editAD) {
+			GroceryStoreProgramGUI.currentEmployeeUser.setAddress(employeeChangeAD.getText());
+			remove(employeeAD);
+			add(employeeAD);
+		}
+		
+		if (e.getSource() == editPN) {
+			GroceryStoreProgramGUI.currentEmployeeUser.setPhoneNumber(employeeChangePN.getText());
+			remove(employeePN);
+			add(employeePN);
+		}
+		//
 		
 		if (e.getSource() == quantityButton) {
 			for(int i = 0; i < GroceryStore.InventoryList.size(); i ++) {
