@@ -149,26 +149,22 @@ public class EmployeePanel extends JPanel implements ActionListener{
 		// Employee Info
 		if (e.getSource() == editUN) {
 			GroceryStoreProgramGUI.currentEmployeeUser.setUsername(employeeChangeUN.getText());
-			remove(employeeUN);
-			add(employeeUN);
+			employeeUN.setText("Username: " + GroceryStoreProgramGUI.currentEmployeeUser.getUsername());
 		}
 		
 		if (e.getSource() == editPW) {
 			GroceryStoreProgramGUI.currentEmployeeUser.setPassword(employeeChangePW.getText());
-			remove(employeePW);
-			add(employeePW);
+			employeePW.setText("Password: " + GroceryStoreProgramGUI.currentEmployeeUser.getPassword());
 		}
 		
 		if (e.getSource() == editAD) {
 			GroceryStoreProgramGUI.currentEmployeeUser.setAddress(employeeChangeAD.getText());
-			remove(employeeAD);
-			add(employeeAD);
+			employeeAD.setText("Address: " + GroceryStoreProgramGUI.currentEmployeeUser.getAddress());
 		}
 		
 		if (e.getSource() == editPN) {
 			GroceryStoreProgramGUI.currentEmployeeUser.setPhoneNumber(employeeChangePN.getText());
-			remove(employeePN);
-			add(employeePN);
+			employeePN.setText("Phone Number: " + GroceryStoreProgramGUI.currentEmployeeUser.getPhoneNumber());
 		}
 		//
 		
