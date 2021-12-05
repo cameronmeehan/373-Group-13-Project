@@ -174,9 +174,6 @@ public class EmployeePanel extends JPanel implements ActionListener{
 
 					quantity.setText(GroceryStore.InventoryList.get(i).getName() + ": "
 							+ GroceryStore.InventoryList.get(i).getStock());
-					
-					remove(quantity);
-					add(quantity);
 				}
 			}
 		}
@@ -207,10 +204,14 @@ public class EmployeePanel extends JPanel implements ActionListener{
 							GroceryStore.InventoryList.get(i).setStock(0);
 						}
 						newAmount.setText("New Stock: " + GroceryStore.InventoryList.get(i).getStock());
+						quantity.setText(GroceryStore.InventoryList.get(i).getName() + ": "
+							+ GroceryStore.InventoryList.get(i).getStock());
 					}
 					
 				}
 				stockPopUp.add(newAmount);
+				remove(quantity);
+				add(quantity);
 			}
 		}
 		
