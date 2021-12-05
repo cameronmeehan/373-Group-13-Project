@@ -141,8 +141,17 @@ public class EmployeePanel extends JPanel implements ActionListener{
 		if (e.getSource() == iRemoveStock) {
 			for(int i = 0; i < GroceryStore.InventoryList.size(); i++) {
 				if(GroceryStore.InventoryList.get(i).getName().equals(checkInventory.getText())) {
-					GroceryStore.InventoryList.get(i).decreaseStock(Integer.parseInt(amount.getText()));
-					newAmount.setText("New Stock: " + GroceryStore.InventoryList.get(i).getStock());
+					if (GroceryStore.InventoryList.get(i).getStock() == 0) {
+						JOptionPane.showMessageDialog(null, "Item already has 0 stock");
+					}
+					else {
+						GroceryStore.InventoryList.get(i).decreaseStock(Integer.parseInt(amount.getText()));
+						if (GroceryStore.InventoryList.get(i).getStock() < 0) {
+							GroceryStore.InventoryList.get(i).setStock(0);
+						}
+						newAmount.setText("New Stock: " + GroceryStore.InventoryList.get(i).getStock());
+					}
+					
 				}
 				stockPopUp.add(newAmount);
 			}
