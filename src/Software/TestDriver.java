@@ -109,6 +109,8 @@ public class TestDriver {
 				ck2.addItemToCart(I3);
 				ck2.addItemToCart(I3);
 				ck2.addItemToCart(I2);
+				ck2.removeItem(I1);
+				
 				ck2.checkout();
 		
 				
