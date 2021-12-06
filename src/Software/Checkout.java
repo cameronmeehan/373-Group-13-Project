@@ -3,7 +3,7 @@ package Software;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-
+import java.awt.Font;
 import javax.swing.*;
 
 import People.Admin;
@@ -17,6 +17,7 @@ import Tangibles.InventoryItem;
 import Tangibles.Meat;
 import Tangibles.Produce;
 
+
 //possible added feature, GroceryStore.java holds int of balance and money is added when sales are made
 //money would have to be removed from balance when inventory is added to stock by employee
 
@@ -27,7 +28,6 @@ public class Checkout implements java.io.Serializable  {
 	private boolean saleCompleted; // needed for working with checkout objects later
 	private ArrayList<InventoryItem> CartList = new ArrayList<InventoryItem>(); // list of objects added to cart to purchase
 	private ArrayList<Integer> quantity = new ArrayList<Integer>(); // quantity of items, at same index as items in CartList
-	
 	public Checkout() {
 		GroceryStore.CheckoutList.add(this);
 		saleCompleted = false;
@@ -38,8 +38,8 @@ public class Checkout implements java.io.Serializable  {
 		return(saleCompleted);
 	}
 	
-	//add item by object or barcode
-	public void addItemToCart(long abarcode) {
+	//add item by object or barcode //Changed long to an int to see
+	public void addItemToCart(int abarcode) {
 		for(int i= 0; i < GroceryStore.InventoryList.size(); i++) {
 			if(GroceryStore.InventoryList.get(i).getBarcode() == abarcode) {
 				addItemToCart(GroceryStore.InventoryList.get(i));
@@ -69,6 +69,7 @@ public class Checkout implements java.io.Serializable  {
 	public ArrayList<InventoryItem> getCartList() {
 		return(CartList);
 	}
+	
 	
 	//remove item by object or barcode
 	public void removeItem (InventoryItem aItem ) {
@@ -109,29 +110,36 @@ public class Checkout implements java.io.Serializable  {
 	}
 		
 	//finish checkout
-	public void checkout () {
+	public String checkout () {
+		String checkout = "";
 		for(int i = 0; i < CartList.size(); i++) {
 			
-			if(GroceryStore.InventoryList.contains(CartList.get(i)) & (GroceryStore.InventoryList.get(GroceryStore.InventoryList.indexOf(CartList.get(i))).getStock() != 0)){
-				
+			if(GroceryStore.InventoryList.contains(CartList.get(i))){
 				GroceryStore.InventoryList.get(GroceryStore.InventoryList.indexOf(CartList.get(i))).decreaseStock(quantity.get(i));
 				
 				System.out.println(quantity.get(i) + " " + CartList.get(i).getName() + " was purchased at "
 				+ CartList.get(i).getPrice() + "$ each." );
 				
 				checkoutCost = checkoutCost + (CartList.get(i).getPrice() * quantity.get(i));
+				
+				checkout = checkout + " " + quantity.get(i) + " " + CartList.get(i).getName() + " was purchased at $"
+						+ CartList.get(i).getPrice() + " each." + "\n" ;
+				
+				
 			}
 			else {
 				System.out.println(CartList.get(i).getName() + " is not in stock to sell");
-				JOptionPane.showMessageDialog(null, CartList.get(i).getName() + " is not in stock to sell");
 			}
 			
 			
+			
 		}
-		applyDiscount();
-		System.out.println("Total cost of sale = " + checkoutCost + "$. \n" );
-		saleCompleted = true;
 		
+		
+		applyDiscount();
+		checkout = checkout + "Total cost of sale = " + checkoutCost + "$. \n" ;
+		saleCompleted = true;
+		return checkout;
 	}
 }
 

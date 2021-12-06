@@ -316,7 +316,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 			GroceryStore.EmployeeList.get(GroceryStore.EmployeeList.size() - 1).setPassword(password.getText());
 			GroceryStore.EmployeeList.get(GroceryStore.EmployeeList.size() - 1).setAddress(address.getText());
 			GroceryStore.EmployeeList.get(GroceryStore.EmployeeList.size() - 1).setPhoneNumber(phoneNum.getText());
-			GroceryStore.EmployeeList.get(GroceryStore.EmployeeList.size() - 1).setHourlyRate(Integer.parseInt(payRate.getText()));
+			GroceryStore.EmployeeList.get(GroceryStore.EmployeeList.size() - 1).setHourlyRate(Double.parseDouble(payRate.getText()));
 			
 			//Refreshing the Employee Scroll panel
 			remove(employeeInfo);

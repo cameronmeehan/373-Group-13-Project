@@ -12,6 +12,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.JFrame;
 
@@ -72,7 +73,7 @@ public class GroceryStoreProgramGUI extends JFrame{
 	public void runLogin() {
 		//clears last panel
 		getContentPane().removeAll();
-		
+		//this.setContentPane(new JLabel(new ImageIcon("\\Resorces\\groceryImage.png")));
 		
 		Login login;
 		login = new Login(this);

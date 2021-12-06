@@ -12,12 +12,15 @@ public class Login extends JPanel implements ActionListener{
 	private JTextField password;
 	private JLabel heading;
 	private GroceryStoreProgramGUI top;
-	
+
 	public Login(GroceryStoreProgramGUI aTop) {
 		
 		//needed to make page scrollable
 		setPreferredSize(new Dimension(900,700));
 		setLayout(null);
+		
+		
+		
 		
 		top = aTop;
 		heading = new JLabel("Welcome to the Grocery Store Program");
