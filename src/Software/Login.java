@@ -35,8 +35,8 @@ public class Login extends JPanel implements ActionListener{
 		
 		//setBounds is (x, y, width, height)
 		heading.setBounds(150,10,800, 50);
-		loginButton.setBounds(400,300,200,100);
-		makeNewAcount.setBounds(400,450,200,100);
+		loginButton.setBounds(400,300,200,40);
+		makeNewAcount.setBounds(400,340,200,40);
 		username.setBounds(350,100,300,40);
 		password.setBounds(350,200,300,40);
 		
@@ -85,6 +85,7 @@ public class Login extends JPanel implements ActionListener{
 				}
 			if(loggedin != true) {
 				JOptionPane.showMessageDialog(null, "Incorrect Username Or Password");
+
 			}
 		}
 		

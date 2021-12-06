@@ -50,6 +50,7 @@ public class EmployeePanel extends JPanel implements ActionListener{
 	private JButton iRemoveStock;
 	private JTextField amount;
 	private JLabel newAmount;
+	private JLabel totalSales;
 	
 	// in-person checkout
 	private JButton inPersonCheckout;
@@ -243,6 +244,7 @@ public class EmployeePanel extends JPanel implements ActionListener{
 		stockPopUp.setSize(700,700);
 		stockPopUp.setLayout(null);
 		stockPopUp.setVisible(true);
+		
 		
 		JLabel stockBanner = new JLabel("Please enter an amount to increase or remove stock");
 		stockBanner.setFont(new Font("Calibri", Font.BOLD, 20));
