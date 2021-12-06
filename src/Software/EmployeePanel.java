@@ -135,11 +135,10 @@ public class EmployeePanel extends JPanel implements ActionListener{
 		editAD.addActionListener(this);
 		editPN.addActionListener(this);
 		
+		//adding stuff to page
 		add(employeeUN);add(employeePW); add(employeeAD); add(employeePN); add(employeePR);
 		add(employeeChangeUN); add(employeeChangePW); add(employeeChangeAD); add(employeeChangePN);
 		add(editUN); add(editPW); add(editAD); add(editPN);
-		
-		//adding stuff to page
 		add(exitButton);
 	}
 	public void actionPerformed(ActionEvent e) {
@@ -167,7 +166,7 @@ public class EmployeePanel extends JPanel implements ActionListener{
 			GroceryStoreProgramGUI.currentEmployeeUser.setPhoneNumber(employeeChangePN.getText());
 			employeePN.setText("Phone Number: " + GroceryStoreProgramGUI.currentEmployeeUser.getPhoneNumber());
 		}
-		//
+		// End of Employee Info
 		
 		if (e.getSource() == quantityButton) {
 			for(int i = 0; i < GroceryStore.InventoryList.size(); i ++) {
@@ -179,6 +178,7 @@ public class EmployeePanel extends JPanel implements ActionListener{
 			}
 		}
 		
+		// Stock Pop-up Menu
 		if (e.getSource() == changeStock) {
 			stockPopUpWindow();
 		}
@@ -238,6 +238,7 @@ public class EmployeePanel extends JPanel implements ActionListener{
 		return(lTemp);
 	}
 	
+	//Stock Pop-up Window
 	public void stockPopUpWindow() {
 		stockPopUp = new JDialog();
 		stockPopUp.setTitle(checkInventory.getText() + " Stock");
