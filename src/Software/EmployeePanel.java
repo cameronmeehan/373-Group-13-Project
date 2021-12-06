@@ -187,8 +187,12 @@ public class EmployeePanel extends JPanel implements ActionListener{
 				if(GroceryStore.InventoryList.get(i).getName().equals(checkInventory.getText())) {
 					GroceryStore.InventoryList.get(i).increaseStock(Integer.parseInt(amount.getText()));
 					newAmount.setText("New Stock: " + GroceryStore.InventoryList.get(i).getStock());
+					quantity.setText(GroceryStore.InventoryList.get(i).getName() + ": "
+							+ GroceryStore.InventoryList.get(i).getStock());
 				}
 				stockPopUp.add(newAmount);
+				remove(quantity);
+				add(quantity);
 			}
 		}
 		
