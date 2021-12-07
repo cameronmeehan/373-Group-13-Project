@@ -64,17 +64,25 @@ public class MakeAcount extends JPanel implements ActionListener {
 		add(exit);
 		
 	}
+
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == makeAcount) {
+			
+			if(Customer.checkCreditCardNumber(creditNum.getText())){
 			Customer C = new Customer();
 			C.setUsername(username.getText());
 			C.setAddress(address.getText());
 			C.setCreditCardNumber(creditNum.getText());
 			C.setPassword(password.getText());
 			C.setPhoneNumber(phoneNumber.getText());
-			
 			top.runLogin();
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Credit card number inputed is not 16 digits.");
+			}
+			
+			
 		}
 		if(e.getSource() == exit) {
 			top.runLogin();

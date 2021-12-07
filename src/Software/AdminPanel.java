@@ -93,6 +93,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 	private JButton invCheck;
 	private JLabel invView;
 	private JScrollPane SalesInventoryScroll;
+	private JLabel totalSales;
 	
 	public AdminPanel(GroceryStoreProgramGUI aTop) {
 		//creating an object of GroceryStorePanelGUI so its methods can be used to change panels
@@ -308,7 +309,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		// listener for hire employee button
 		if(e.getSource() == HireEmployee) {
 			
-
+			
 			//hiring employee
 			JOptionPane.showMessageDialog(null,GroceryStoreProgramGUI.currentAdminUser.hireEmployee(name.getText()));
 			
@@ -528,6 +529,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		return(lTemp);
 	}	
 	
+
 	public JList ListFromArrayInventory(ArrayList<InventoryItem> aList) {
 		DefaultListModel temp = new DefaultListModel();
 		
@@ -539,9 +541,14 @@ public class AdminPanel extends JPanel implements ActionListener{
 		return(lTemp);
 	}	
 	
+	//a pop up windown with sales analysis information
 	public void salesAnalysisWindow() {
 		
-
+	//Total sale cash display
+		String totalSaleAmount = Double.toString(GroceryStoreProgramGUI.currentAdminUser.totalSalesCalc());
+		totalSales = new JLabel("The total cash recieved from all checkouts is : " + totalSaleAmount + "$.");
+		totalSales.setBounds(225,520,400,40);
+		
 	//Item sales check
 		Inventories = ListFromArrayInventory(GroceryStore.InventoryList);
 		SalesInventoryScroll = new JScrollPane(Inventories);
@@ -595,7 +602,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		analysisPopUp.add(SalesInventoryScroll);
 		analysisPopUp.add(invCheck);
 		analysisPopUp.add(invView);
-		
+		analysisPopUp.add(totalSales);
 		analysisPopUp.setVisible(true);
 	}
 	

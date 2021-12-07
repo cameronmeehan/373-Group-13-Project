@@ -8,8 +8,9 @@ public class Customer extends Person implements java.io.Serializable {
 
 	private String creditCardNumber;
 	
-	public Customer() {
+	public void Customer() {
 		GroceryStore.CustomerList.add(this);
+		
 	}
 
 	public String getCreditCardNumber() {
@@ -17,20 +18,23 @@ public class Customer extends Person implements java.io.Serializable {
 	}
 
 	public void setCreditCardNumber(String l) {
-		int length = l.length();
 		
-		if (length == 16) {
-			this.creditCardNumber = l;
+		this.creditCardNumber = l;
+		
+	}
+	
+	//checking credit card number for correct length
+	public static boolean checkCreditCardNumber(String t) {
+		int length = t.length();
+		
+		
+		if(length == 16) {
+			return(true);
 		}
 		
-		if(length < 16) {
-			System.out.println("This credit card number is invalid, card number is not long enough.");	
-		}
-		
-		if(length > 16) {
-			System.out.println("This credit card number is invalid, card number is too long.");
+		else {
+			return(false);
 		}
 	}
-
 	
 }

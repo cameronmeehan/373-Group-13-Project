@@ -108,6 +108,7 @@ public class Admin extends Person implements java.io.Serializable  {
 		return("Error occured in removing inventory item.");
 	}
 	
+	//finds top 5 selling items 
 	public ArrayList<InventoryItem> topSale(){
 		
 		
@@ -160,6 +161,7 @@ public class Admin extends Person implements java.io.Serializable  {
 		return (topList);
 	}
 
+	//gets total quantity of an item sold, from all checkouts
 	public int getQuantitySold(InventoryItem aItem) {
 		int quantity;
 		
@@ -198,6 +200,7 @@ public class Admin extends Person implements java.io.Serializable  {
 		return quantity;
 	}
 
+	//gets sales info about an item, returns string
 	public String getSalesInfo(String aItemName) {
 		InventoryItem tempItem = null;
 		for(int i = 0; i < GroceryStore.InventoryList.size(); i++) {
@@ -208,5 +211,18 @@ public class Admin extends Person implements java.io.Serializable  {
 		
 		
 		return(aItemName +" sold " + getQuantitySold(tempItem) + " times at " + tempItem.getPrice() + "$. " + tempItem.getStock() + " currently in stock." );
+	}
+
+	//finds the total money made on all checkouts
+	public double totalSalesCalc() {
+		double temp = 0;
+		
+		for(int i = 0; i < GroceryStore.CheckoutList.size(); i++) {
+			if(GroceryStore.CheckoutList.get(i).getSaleCompleted() == true) {
+			temp = temp + GroceryStore.CheckoutList.get(i).getCheckoutCost();
+			}
+		}
+		
+		return(temp);
 	}
 }

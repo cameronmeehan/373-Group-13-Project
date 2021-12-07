@@ -70,6 +70,9 @@ public class Checkout implements java.io.Serializable  {
 		return(CartList);
 	}
 	
+	public double getCheckoutCost() {
+		return(checkoutCost);
+	}
 	
 	//remove item by object or barcode
 	public void removeItem (InventoryItem aItem ) {
